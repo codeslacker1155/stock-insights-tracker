@@ -17,13 +17,18 @@ function StockDataDisplay() {
       setLoading(true);
       setError(null);
       const data = await fetchStockData(symbol);
-      setStockData(data);
+      if (data) {
+        setStockData(data);
+        setLoading(false);
+      } else {
+        setError('No stock data available');
+      }
     } catch (error) {
       setError('Failed to fetch stock data');
-    } finally {
       setLoading(false);
     }
   }, [symbol]);
+  
 
   useEffect(() => {
     fetchData();

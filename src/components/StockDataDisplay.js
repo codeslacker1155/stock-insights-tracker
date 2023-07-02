@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { fetchStockData } from '../utils/api';
 
 function StockDataDisplay() {
@@ -12,7 +12,7 @@ function StockDataDisplay() {
     fetchData();
   };
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const data = await fetchStockData(symbol);
       setStockData(data);
@@ -21,19 +21,11 @@ function StockDataDisplay() {
       setError('Failed to fetch stock data');
       setLoading(false);
     }
-  };
+  }, [symbol]);
 
   useEffect(() => {
     fetchData();
-  }, [symbol]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  }, [fetchData]); 
 
   return (
     <div>

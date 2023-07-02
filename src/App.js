@@ -1,7 +1,12 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { fetchStockData } from './utils/api';
 
 function App() {
+  const [symbol, setSymbol] = useState('');
+  const [stockData, setStockData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const updateChartSymbol = useCallback(async (symbol) => {
     if (window.TradingView && window.TradingView.widget) {
       window.TradingView.widget({
@@ -26,22 +31,20 @@ function App() {
     try {
       const data = await fetchStockData(symbol);
       if (data) {
-        displayCompanyInfo(data);
+        setStockData(data);
         updateChartSymbol(symbol);
       } else {
-        showError('No stock data available');
+        setError('No stock data available');
       }
     } catch (error) {
       console.error('Error fetching stock data:', error);
-      showError('Failed to fetch stock data');
+      setError('Failed to fetch stock data');
     }
   }, [updateChartSymbol]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Enter') {
-        const symbolInput = document.getElementById('symbol-input');
-        const symbol = symbolInput.value.toUpperCase();
         fetchData(symbol);
       }
     };
@@ -52,7 +55,7 @@ function App() {
     return () => {
       symbolInput.removeEventListener('keydown', handleKeyDown);
     };
-  }, [fetchData]);
+  }, [fetchData, symbol]);
 
   const displayCompanyInfo = (stockData) => {
     const companyInfoContainer = document.getElementById('company-info');
@@ -84,6 +87,14 @@ function App() {
     companyInfoContainer.innerHTML = `<p class="error-message">${errorMessage}</p>`;
   };
 
+  const handleSymbolInputChange = (event) => {
+    setSymbol(event.target.value.toUpperCase());
+  };
+
+  const handleSearch = () => {
+    fetchData(symbol);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -92,23 +103,43 @@ function App() {
           Stockify is a cutting-edge stock market analysis and visualization platform that empowers users with real-time data, advanced charting tools, and comprehensive company information. Stay informed and make informed investment decisions with Stockify's intuitive interface, powerful features, and user-friendly design. Explore stock market trends, track your favorite companies, and dive deep into financial data with ease. Whether you're a seasoned investor or just getting started, Stockify is your go-to companion for unlocking the potential of the stock market. Take control of your financial future with Stockify!
         </p>
       </header>
-      <div id="search-bar" className="search-bar">
-        <label>
-          Symbol:
-          <input type="text" id="symbol-input" />
-        </label>
-        <button type="button" onClick={() => {
-          const symbolInput = document.getElementById('symbol-input');
-          const symbol = symbolInput.value.toUpperCase();
-          fetchData(symbol);
-        }}>
+      <div className="search-bar">
+        <label htmlFor="symbol-input">Symbol:</label>
+        <input type="text" id="symbol-input" value={symbol} onChange={handleSymbolInputChange} />
+        <button type="button" onClick={handleSearch}>
           Search
         </button>
       </div>
       <div className="tradingview-widget-container">
         <div id="tradingview_4d8c0"></div>
       </div>
-      <div id="company-info"></div>
+      <div id="company-info">
+        {loading && <p>Loading...</p>}
+        {error && <p className="error-message">{error}</p>}
+        {stockData && (
+          <div>
+            <h2>{stockData.symbol}</h2>
+            <p>Address: {stockData.address}</p>
+            <p>City: {stockData.city}</p>
+            <p>State: {stockData.state}</p>
+            <p>ZIP: {stockData.zip}</p>
+            <p>Country: {stockData.country}</p>
+            <p>Phone: {stockData.phone}</p>
+            <p>Website: {stockData.website}</p>
+            <p>Industry: {stockData.industry}</p>
+            <p>Sector: {stockData.sector}</p>
+            <p>Long Business Summary: {stockData.longBusinessSummary}</p>
+            <p>Full-Time Employees: {stockData.fullTimeEmployees}</p>
+            <p>Audit Risk: {stockData.auditRisk}</p>
+            <p>Board Risk: {stockData.boardRisk}</p>
+            <p>Compensation Risk: {stockData.compensationRisk}</p>
+            <p>Shareholder Rights Risk: {stockData.shareHolderRightsRisk}</p>
+            <p>Overall Risk: {stockData.overallRisk}</p>
+            <p>Governance Epoch Date: {stockData.governanceEpochDate}</p>
+            <p>Compensation As Of Epoch Date: {stockData.compensationAsOfEpochDate}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

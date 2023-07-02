@@ -31,12 +31,7 @@ function StockDataDisplay() {
     }
   }, [symbol]);
 
-  useEffect(() => {
-    fetchData();
-    updateChartSymbol(symbol);
-  }, [fetchData, symbol]);
-
-  const updateChartSymbol = (symbol) => {
+  const updateChartSymbol = useCallback((symbol) => {
     if (window.TradingView && window.TradingView.widget) {
       window.TradingView.widget({
         autosize: true,
@@ -54,7 +49,12 @@ function StockDataDisplay() {
         container_id: 'tradingview_4d8c0'
       });
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+    updateChartSymbol(symbol);
+  }, [fetchData, symbol, updateChartSymbol]);
 
   return (
     <div>
@@ -145,4 +145,3 @@ function StockDataDisplay() {
 }
 
 export default StockDataDisplay;
-

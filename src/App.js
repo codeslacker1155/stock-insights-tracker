@@ -31,7 +31,8 @@ function App() {
     setSymbol(event.target.value.toUpperCase());
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (event) => {
+    event.preventDefault(); // Prevent page refresh
     if (symbol) {
       await fetchData(symbol);
     }

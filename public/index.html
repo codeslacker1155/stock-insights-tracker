@@ -54,13 +54,16 @@
           Stockify is a cutting-edge stock market analysis and visualization platform that empowers users with real-time data, advanced charting tools, and comprehensive company information. Stay informed and make informed investment decisions with Stockify's intuitive interface, powerful features, and user-friendly design. Explore stock market trends, track your favorite companies, and dive deep into financial data with ease. Whether you're a seasoned investor or just getting started, Stockify is your go-to companion for unlocking the potential of the stock market. Take control of your financial future with Stockify!
         </p>
       </header>
-      <div className="search-bar">
-        <label htmlFor="symbol-input">Symbol:</label>
-        <input type="text" id="symbol-input" value={symbol} onChange={handleSymbolInputChange} />
-        <button type="button" onClick={handleSearch}>
-          Search
-        </button>
-      </div>
+      <form onSubmit={handleSearch}>
+        <div className="search-bar">
+          <label htmlFor="symbol-input">Symbol:</label>
+          <input type="text" id="symbol-input" value={symbol} onChange={handleSymbolInputChange} />
+          <button type="submit">
+            Search
+          </button>
+        </div>
+      </form>
+      
       <div className="tradingview-widget-container">
         <div id="tradingview_4d8c0"></div>
       </div>

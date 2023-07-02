@@ -13,6 +13,7 @@ function App() {
       const data = await fetchStockData(symbol);
       if (data) {
         setStockData(data);
+        updateChartSymbol(symbol);
       } else {
         setError('No stock data available');
       }
@@ -32,33 +33,31 @@ function App() {
     fetchData(symbol);
   };
 
+  const updateChartSymbol = useCallback((symbol) => {
+    if (window.TradingView && window.TradingView.widget) {
+      window.TradingView.widget({
+        autosize: true,
+        symbol: symbol,
+        interval: 'D',
+        timezone: 'Etc/UTC',
+        theme: 'dark',
+        style: '1',
+        locale: 'en',
+        toolbar_bg: '#f1f3f6',
+        enable_publishing: false,
+        allow_symbol_change: true,
+        details: true,
+        studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
+        container_id: 'tradingview_4d8c0'
+      });
+    }
+  }, []);
+
   useEffect(() => {
-    const updateChartSymbol = async (symbol) => {
-      if (window.TradingView && window.TradingView.widget) {
-        const widgetOptions = {
-          autosize: true,
-          symbol: symbol,
-          interval: 'D',
-          timezone: 'Etc/UTC',
-          theme: 'dark',
-          style: '1',
-          locale: 'en',
-          toolbar_bg: '#f1f3f6',
-          enable_publishing: false,
-          allow_symbol_change: true,
-          details: true,
-          studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
-          container_id: 'tradingview_4d8c0'
-        };
-
-        window.TradingView.widget(widgetOptions);
-      }
-    };
-
     if (symbol && stockData) {
       updateChartSymbol(symbol);
     }
-  }, [symbol, stockData]);
+  }, [symbol, stockData, updateChartSymbol]);
 
   return (
     <div className="App">

@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { fetchStockData } from './api';
+import { fetchStockData } from './utils/api';
 
 function App() {
   const updateChartSymbol = useCallback(async () => {

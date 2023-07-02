@@ -29,3 +29,5 @@ const api = {
     return stockData;
   }
 };
+
+export default api;

@@ -2,9 +2,27 @@ import React, { useEffect, useCallback } from 'react';
 import { fetchStockData } from './utils/api';
 
 function App() {
-  const updateChartSymbol = useCallback(async () => {
-    const symbolInput = document.getElementById('symbol-input');
-    const symbol = symbolInput.value.toUpperCase();
+  const updateChartSymbol = useCallback(async (symbol) => {
+    if (window.TradingView && window.TradingView.widget) {
+      window.TradingView.widget({
+        autosize: true,
+        symbol: symbol,
+        interval: 'D',
+        timezone: 'Etc/UTC',
+        theme: 'dark',
+        style: '1',
+        locale: 'en',
+        toolbar_bg: '#f1f3f6',
+        enable_publishing: false,
+        allow_symbol_change: true,
+        details: true,
+        studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
+        container_id: 'tradingview_4d8c0'
+      });
+    }
+  }, []);
+
+  const fetchData = useCallback(async (symbol) => {
     try {
       const data = await fetchStockData(symbol);
       if (data) {
@@ -17,12 +35,14 @@ function App() {
       console.error('Error fetching stock data:', error);
       showError('Failed to fetch stock data');
     }
-  }, []);
+  }, [updateChartSymbol]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Enter') {
-        updateChartSymbol();
+        const symbolInput = document.getElementById('symbol-input');
+        const symbol = symbolInput.value.toUpperCase();
+        fetchData(symbol);
       }
     };
 
@@ -32,7 +52,7 @@ function App() {
     return () => {
       symbolInput.removeEventListener('keydown', handleKeyDown);
     };
-  }, [updateChartSymbol]);
+  }, [fetchData]);
 
   const displayCompanyInfo = (stockData) => {
     const companyInfoContainer = document.getElementById('company-info');
@@ -77,7 +97,11 @@ function App() {
           Symbol:
           <input type="text" id="symbol-input" />
         </label>
-        <button type="button" onClick={updateChartSymbol}>
+        <button type="button" onClick={() => {
+          const symbolInput = document.getElementById('symbol-input');
+          const symbol = symbolInput.value.toUpperCase();
+          fetchData(symbol);
+        }}>
           Search
         </button>
       </div>

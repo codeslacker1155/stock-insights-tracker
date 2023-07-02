@@ -28,54 +28,51 @@
 </head>
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
 
-  <!-- TradingView Widget BEGIN -->
-  <div class="tradingview-widget-container">
-    <div id="tradingview_4d8c0"></div>
-    <div class="tradingview-widget-symbol">
-      <label>
-        Symbol:
-        <input type="text" id="symbol-input" />
-      </label>
-      <button type="button" onclick="updateChartSymbol()">Search</button>
-    </div>
-    <div class="tradingview-widget-copyright">
-      <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-        <span class="blue-text">Track all markets on TradingView</span>
-      </a>
-    </div>
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <script type="text/javascript">
-      function updateChartSymbol() {
-        var symbol = document.getElementById('symbol-input').value;
-        new TradingView.widget(
-          {
-            "autosize": true,
-            "symbol": symbol,
-            "interval": "D",
-            "timezone": "Etc/UTC",
-            "theme": "dark",
-            "style": "1",
-            "locale": "en",
-            "toolbar_bg": "#f1f3f6",
-            "enable_publishing": false,
-            "allow_symbol_change": true,
-            "details": true,
-            "studies": [
-              "STD;Average%Day%Range",
-              "STD;SMA",
-              "STD;ROC"
-            ],
-            "container_id": "tradingview_4d8c0"
-          }
-        );
-      }
-
-      // Call the updateChartSymbol function with the initial symbol value
-      updateChartSymbol();
-    </script>
+  <!-- Search Bar -->
+  <div id="search-bar" style="display: flex; justify-content: center; margin-top: 20px;">
+    <label>
+      Symbol:
+      <input type="text" id="symbol-input" />
+    </label>
+    <button type="button" onclick="updateChartSymbol()">Search</button>
   </div>
-  <!-- TradingView Widget END -->
+
+  <!-- TradingView Widget -->
+  <div class="tradingview-widget-container" style="display: flex; justify-content: center; margin-top: 20px;">
+    <div id="tradingview_4d8c0"></div>
+  </div>
+
+  <!-- TradingView Widget Scripts -->
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+    function updateChartSymbol() {
+      var symbol = document.getElementById('symbol-input').value;
+      new TradingView.widget(
+        {
+          "autosize": true,
+          "symbol": symbol,
+          "interval": "D",
+          "timezone": "Etc/UTC",
+          "theme": "dark",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "allow_symbol_change": true,
+          "details": true,
+          "studies": [
+            "STD;Average%Day%Range",
+            "STD;SMA",
+            "STD;ROC"
+          ],
+          "container_id": "tradingview_4d8c0"
+        }
+      );
+    }
+
+    // Call the updateChartSymbol function
+    updateChartSymbol();
+  </script>
 </body>
 </html>

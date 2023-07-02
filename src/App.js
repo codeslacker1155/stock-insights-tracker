@@ -6,9 +6,39 @@ function App() {
   const [stockData, setStockData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [chartInitialized, setChartInitialized] = useState(false);
 
-  const updateChartSymbol = useCallback((symbol) => {
-    if (window.TradingView && window.TradingView.widget) {
+  const fetchData = useCallback(async (symbol) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await fetchStockData(symbol);
+      if (data) {
+        setStockData(data);
+        setChartInitialized(false); // Reset chart initialization state
+      } else {
+        setError('No stock data available');
+      }
+    } catch (error) {
+      console.error('Error fetching stock data:', error);
+      setError('Failed to fetch stock data');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const handleSymbolInputChange = (event) => {
+    setSymbol(event.target.value.toUpperCase());
+  };
+
+  const handleSearch = async () => {
+    if (symbol) {
+      await fetchData(symbol);
+    }
+  };
+
+  const initializeChart = useCallback(() => {
+    if (window.TradingView && window.TradingView.widget && stockData) {
       window.TradingView.widget({
         autosize: true,
         symbol: symbol,
@@ -24,63 +54,17 @@ function App() {
         studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
         container_id: 'tradingview_4d8c0'
       });
+      setChartInitialized(true);
     }
-  }, []);
-
-  // should after the user enters a symbol and clicks the search button give the chart and the company info
-  const fetchData = useCallback(async (symbol) => {
-    try {
-      setLoading(true);
-      setError(null);
-      const data = await fetchStockData(symbol);
-      if (data) {
-        setStockData(data);
-        updateChartSymbol(symbol);
-      } else {
-        setError('No stock data available');
-      }
-    } catch (error) {
-      console.error('Error fetching stock data:', error);
-      setError('Failed to fetch stock data');
-    } finally {
-      setLoading(false);
-    }
-  }, [updateChartSymbol]);
-
-  const handleSymbolInputChange = (event) => {
-    setSymbol(event.target.value.toUpperCase());
-  };
-
-  const handleSearch = async () => {
-    if (symbol) {
-      await fetchData(symbol);
-    }
-  };  
+  }, [symbol, stockData]);
 
   useEffect(() => {
-    const updateChartSymbol = (symbol) => {
-      if (window.TradingView && window.TradingView.widget) {
-        window.TradingView.widget({
-          autosize: true,
-          symbol: symbol,
-          interval: 'D',
-          timezone: 'Etc/UTC',
-          theme: 'dark',
-          style: '1',
-          locale: 'en',
-          toolbar_bg: '#f1f3f6',
-          enable_publishing: false,
-          allow_symbol_change: true,
-          details: true,
-          studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
-          container_id: 'tradingview_4d8c0'
-        });
-      }
-    };
-      if (symbol && stockData) {
-        updateChartSymbol(stockData.symbol);
-      }
-    }, [symbol, stockData, updateChartSymbol]);
+    if (chartInitialized) {
+      // Chart is initialized, perform any additional actions if needed
+    } else {
+      initializeChart();
+    }
+  }, [chartInitialized, initializeChart]);
 
   return (
     <div className="App">

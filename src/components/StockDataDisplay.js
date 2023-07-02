@@ -10,6 +10,7 @@ function StockDataDisplay() {
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchData();
+    updateChartSymbol(symbol);
   };
 
   const fetchData = useCallback(async () => {
@@ -32,7 +33,31 @@ function StockDataDisplay() {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+    updateChartSymbol(symbol);
+  }, [fetchData, symbol]);
+
+  const updateChartSymbol = (symbol) => {
+    if (window.TradingView && window.TradingView.widget) {
+      window.TradingView.widget({
+        symbol,
+        interval: 'D',
+        timezone: 'Etc/UTC',
+        theme: 'dark',
+        style: '1',
+        locale: 'en',
+        toolbar_bg: '#f1f3f6',
+        enable_publishing: false,
+        allow_symbol_change: true,
+        details: true,
+        studies: [
+          'STD;Average%Day%Range',
+          'STD;SMA',
+          'STD;ROC'
+        ],
+        container_id: 'tradingview_4d8c0'
+      });
+    }
+  };
 
   return (
     <div>

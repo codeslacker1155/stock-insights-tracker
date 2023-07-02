@@ -1,4 +1,4 @@
-/* app.css */
+/* App.css */
 .App {
   text-align: center;
   display: flex;
@@ -23,6 +23,7 @@
   background-color: #282c34;
   padding: 20px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .App-link {
@@ -36,4 +37,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#error-message {
+  color: red;
 }

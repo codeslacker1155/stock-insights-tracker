@@ -24,11 +24,11 @@ function StockDataDisplay() {
         setError('No stock data available');
       }
     } catch (error) {
+      console.error('Error fetching stock data:', error);
       setError('Failed to fetch stock data');
       setLoading(false);
     }
   }, [symbol]);
-  
 
   useEffect(() => {
     fetchData();

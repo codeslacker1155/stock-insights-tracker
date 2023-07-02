@@ -2,22 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { fetchStockData } from '../utils/api';
 
 function StockDataDisplay() {
+  const [symbol, setSymbol] = useState('AAPL');
   const [stockData, setStockData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchStockData();
-        setStockData(data);
-        setLoading(false);
-      } catch (error) {
-        setError('Failed to fetch stock data');
-        setLoading(false);
-      }
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchData();
+  };
 
+  const fetchData = async () => {
+    try {
+      const data = await fetchStockData(symbol);
+      setStockData(data);
+      setLoading(false);
+    } catch (error) {
+      setError('Failed to fetch stock data');
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -34,6 +40,17 @@ function StockDataDisplay() {
       {stockData && (
         <div>
           <h2>Stock Data</h2>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Symbol:
+              <input
+                type="text"
+                value={symbol}
+                onChange={(e) => setSymbol(e.target.value)}
+              />
+            </label>
+            <button type="submit">Search</button>
+          </form>
           <p>Symbol: {stockData.symbol}</p>
           <p>Address: {stockData.address}</p>
           <p>City: {stockData.city}</p>
@@ -53,37 +70,55 @@ function StockDataDisplay() {
           <p>Overall Risk: {stockData.overallRisk}</p>
           <p>Governance Epoch Date: {stockData.governanceEpochDate}</p>
           <p>Compensation As Of Epoch Date: {stockData.compensationAsOfEpochDate}</p>
-          <p>Earnings Chart: {JSON.stringify(stockData.earningsChart)}</p>
-          <p>Financials Chart: {JSON.stringify(stockData.financialsChart)}</p>
+          <p>Earnings Chart:</p>
+          <ul>
+            {stockData.earningsChart &&
+              stockData.earningsChart.quarterly.map((item, index) => (
+                <li key={index}>
+                  Date: {item.date}, Actual: {item.actual && item.actual.fmt}, Estimate:{' '}
+                  {item.estimate && item.estimate.fmt}
+                </li>
+              ))}
+          </ul>
+          <p>Financials Chart:</p>
+          <ul>
+            {stockData.financialsChart &&
+              stockData.financialsChart.yearly.map((item, index) => (
+                <li key={index}>
+                  Date: {item.date}, Revenue: {item.revenue && item.revenue.fmt}, Earnings:{' '}
+                  {item.earnings && item.earnings.fmt}
+                </li>
+              ))}
+          </ul>
           <p>Financial Currency: {stockData.financialCurrency}</p>
-          <p>Current Price: {JSON.stringify(stockData.currentPrice)}</p>
-          <p>Target High Price: {JSON.stringify(stockData.targetHighPrice)}</p>
-          <p>Target Low Price: {JSON.stringify(stockData.targetLowPrice)}</p>
-          <p>Target Mean Price: {JSON.stringify(stockData.targetMeanPrice)}</p>
-          <p>Target Median Price: {JSON.stringify(stockData.targetMedianPrice)}</p>
-          <p>Recommendation Mean: {JSON.stringify(stockData.recommendationMean)}</p>
+          <p>Current Price: {stockData.currentPrice && stockData.currentPrice.fmt}</p>
+          <p>Target High Price: {stockData.targetHighPrice && stockData.targetHighPrice.fmt}</p>
+          <p>Target Low Price: {stockData.targetLowPrice && stockData.targetLowPrice.fmt}</p>
+          <p>Target Mean Price: {stockData.targetMeanPrice && stockData.targetMeanPrice.fmt}</p>
+          <p>Target Median Price: {stockData.targetMedianPrice && stockData.targetMedianPrice.fmt}</p>
+          <p>Recommendation Mean: {stockData.recommendationMean && stockData.recommendationMean.fmt}</p>
           <p>Recommendation Key: {stockData.recommendationKey}</p>
-          <p>Number of Analyst Opinions: {JSON.stringify(stockData.numberOfAnalystOpinions)}</p>
-          <p>Total Cash: {JSON.stringify(stockData.totalCash)}</p>
-          <p>Total Cash Per Share: {JSON.stringify(stockData.totalCashPerShare)}</p>
-          <p>EBITDA: {JSON.stringify(stockData.ebitda)}</p>
-          <p>Total Debt: {JSON.stringify(stockData.totalDebt)}</p>
-          <p>Quick Ratio: {JSON.stringify(stockData.quickRatio)}</p>
-          <p>Current Ratio: {JSON.stringify(stockData.currentRatio)}</p>
-          <p>Total Revenue: {JSON.stringify(stockData.totalRevenue)}</p>
-          <p>Debt to Equity: {JSON.stringify(stockData.debtToEquity)}</p>
-          <p>Revenue per Share: {JSON.stringify(stockData.revenuePerShare)}</p>
-          <p>Return on Assets: {JSON.stringify(stockData.returnOnAssets)}</p>
-          <p>Return on Equity: {JSON.stringify(stockData.returnOnEquity)}</p>
-          <p>Gross Profits: {JSON.stringify(stockData.grossProfits)}</p>
-          <p>Free Cashflow: {JSON.stringify(stockData.freeCashflow)}</p>
-          <p>Operating Cashflow: {JSON.stringify(stockData.operatingCashflow)}</p>
-          <p>Earnings Growth: {JSON.stringify(stockData.earningsGrowth)}</p>
-          <p>Revenue Growth: {JSON.stringify(stockData.revenueGrowth)}</p>
-          <p>Gross Margins: {JSON.stringify(stockData.grossMargins)}</p>
-          <p>EBITDA Margins: {JSON.stringify(stockData.ebitdaMargins)}</p>
-          <p>Operating Margins: {JSON.stringify(stockData.operatingMargins)}</p>
-          <p>Profit Margins: {JSON.stringify(stockData.profitMargins)}</p>
+          <p>Number of Analyst Opinions: {stockData.numberOfAnalystOpinions && stockData.numberOfAnalystOpinions.fmt}</p>
+          <p>Total Cash: {stockData.totalCash && stockData.totalCash.fmt}</p>
+          <p>Total Cash Per Share: {stockData.totalCashPerShare && stockData.totalCashPerShare.fmt}</p>
+          <p>EBITDA: {stockData.ebitda && stockData.ebitda.fmt}</p>
+          <p>Total Debt: {stockData.totalDebt && stockData.totalDebt.fmt}</p>
+          <p>Quick Ratio: {stockData.quickRatio && stockData.quickRatio.fmt}</p>
+          <p>Current Ratio: {stockData.currentRatio && stockData.currentRatio.fmt}</p>
+          <p>Total Revenue: {stockData.totalRevenue && stockData.totalRevenue.fmt}</p>
+          <p>Debt to Equity: {stockData.debtToEquity && stockData.debtToEquity.fmt}</p>
+          <p>Revenue per Share: {stockData.revenuePerShare && stockData.revenuePerShare.fmt}</p>
+          <p>Return on Assets: {stockData.returnOnAssets && stockData.returnOnAssets.fmt}</p>
+          <p>Return on Equity: {stockData.returnOnEquity && stockData.returnOnEquity.fmt}</p>
+          <p>Gross Profits: {stockData.grossProfits && stockData.grossProfits.fmt}</p>
+          <p>Free Cashflow: {stockData.freeCashflow && stockData.freeCashflow.fmt}</p>
+          <p>Operating Cashflow: {stockData.operatingCashflow && stockData.operatingCashflow.fmt}</p>
+          <p>Earnings Growth: {stockData.earningsGrowth && stockData.earningsGrowth.fmt}</p>
+          <p>Revenue Growth: {stockData.revenueGrowth && stockData.revenueGrowth.fmt}</p>
+          <p>Gross Margins: {stockData.grossMargins && stockData.grossMargins.fmt}</p>
+          <p>EBITDA Margins: {stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}</p>
+          <p>Operating Margins: {stockData.operatingMargins && stockData.operatingMargins.fmt}</p>
+          <p>Profit Margins: {stockData.profitMargins && stockData.profitMargins.fmt}</p>
         </div>
       )}
     </div>

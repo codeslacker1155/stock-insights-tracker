@@ -23,7 +23,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [updateChartSymbol]);
 
   const handleSymbolInputChange = (event) => {
     setSymbol(event.target.value.toUpperCase());

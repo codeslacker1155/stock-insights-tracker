@@ -7,6 +7,26 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const updateChartSymbol = useCallback((symbol) => {
+    if (window.TradingView && window.TradingView.widget) {
+      window.TradingView.widget({
+        autosize: true,
+        symbol: symbol,
+        interval: 'D',
+        timezone: 'Etc/UTC',
+        theme: 'dark',
+        style: '1',
+        locale: 'en',
+        toolbar_bg: '#f1f3f6',
+        enable_publishing: false,
+        allow_symbol_change: true,
+        details: true,
+        studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
+        container_id: 'tradingview_4d8c0'
+      });
+    }
+  }, []);
+
   const fetchData = useCallback(async (symbol) => {
     try {
       setLoading(true);
@@ -32,26 +52,6 @@ function App() {
   const handleSearch = () => {
     fetchData(symbol);
   };
-
-  const updateChartSymbol = useCallback((symbol) => {
-    if (window.TradingView && window.TradingView.widget) {
-      window.TradingView.widget({
-        autosize: true,
-        symbol: symbol,
-        interval: 'D',
-        timezone: 'Etc/UTC',
-        theme: 'dark',
-        style: '1',
-        locale: 'en',
-        toolbar_bg: '#f1f3f6',
-        enable_publishing: false,
-        allow_symbol_change: true,
-        details: true,
-        studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
-        container_id: 'tradingview_4d8c0'
-      });
-    }
-  }, []);
 
   useEffect(() => {
     if (symbol && stockData) {

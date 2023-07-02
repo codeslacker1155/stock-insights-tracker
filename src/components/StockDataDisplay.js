@@ -39,7 +39,8 @@ function StockDataDisplay() {
   const updateChartSymbol = (symbol) => {
     if (window.TradingView && window.TradingView.widget) {
       window.TradingView.widget({
-        symbol,
+        autosize: true,
+        symbol: symbol,
         interval: 'D',
         timezone: 'Etc/UTC',
         theme: 'dark',
@@ -49,11 +50,7 @@ function StockDataDisplay() {
         enable_publishing: false,
         allow_symbol_change: true,
         details: true,
-        studies: [
-          'STD;Average%Day%Range',
-          'STD;SMA',
-          'STD;ROC'
-        ],
+        studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
         container_id: 'tradingview_4d8c0'
       });
     }
@@ -65,11 +62,7 @@ function StockDataDisplay() {
       <form onSubmit={handleSubmit}>
         <label>
           Symbol:
-          <input
-            type="text"
-            value={symbol}
-            onChange={(e) => setSymbol(e.target.value)}
-          />
+          <input type="text" value={symbol} onChange={(e) => setSymbol(e.target.value)} />
         </label>
         <button type="submit">Search</button>
       </form>

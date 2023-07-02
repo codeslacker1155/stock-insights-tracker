@@ -145,3 +145,4 @@ function StockDataDisplay() {
 }
 
 export default StockDataDisplay;
+

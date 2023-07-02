@@ -27,9 +27,11 @@ function App() {
     }
   }, []);
 
+  // should after the user enters a symbol and clicks the search button give the chart and the company info
   const fetchData = useCallback(async (symbol) => {
     try {
       setLoading(true);
+      setError(null);
       const data = await fetchStockData(symbol);
       if (data) {
         setStockData(data);
@@ -49,15 +51,36 @@ function App() {
     setSymbol(event.target.value.toUpperCase());
   };
 
-  const handleSearch = () => {
-    fetchData(symbol);
-  };
+  const handleSearch = async () => {
+    if (symbol) {
+      await fetchData(symbol);
+    }
+  };  
 
   useEffect(() => {
-    if (symbol && stockData) {
-      updateChartSymbol(symbol);
-    }
-  }, [symbol, stockData, updateChartSymbol]);
+    const updateChartSymbol = (symbol) => {
+      if (window.TradingView && window.TradingView.widget) {
+        window.TradingView.widget({
+          autosize: true,
+          symbol: symbol,
+          interval: 'D',
+          timezone: 'Etc/UTC',
+          theme: 'dark',
+          style: '1',
+          locale: 'en',
+          toolbar_bg: '#f1f3f6',
+          enable_publishing: false,
+          allow_symbol_change: true,
+          details: true,
+          studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
+          container_id: 'tradingview_4d8c0'
+        });
+      }
+    };
+      if (symbol && stockData) {
+        updateChartSymbol(symbol);
+      }
+    }, [symbol, stockData, updateChartSymbol]);
 
   return (
     <div className="App">

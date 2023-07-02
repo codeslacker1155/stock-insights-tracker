@@ -25,7 +25,7 @@ function StockDataDisplay() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [symbol]); // Include symbol in the dependency array
 
   if (loading) {
     return <div>Loading...</div>;

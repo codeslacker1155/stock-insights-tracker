@@ -14,35 +14,39 @@ function StockDataDisplay() {
 
   const fetchData = useCallback(async () => {
     try {
+      setLoading(true);
+      setError(null);
       const data = await fetchStockData(symbol);
       setStockData(data);
-      setLoading(false);
     } catch (error) {
       setError('Failed to fetch stock data');
+    } finally {
       setLoading(false);
     }
   }, [symbol]);
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]); 
+  }, [fetchData]);
 
   return (
     <div>
+      <h2>Stock Data</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Symbol:
+          <input
+            type="text"
+            value={symbol}
+            onChange={(e) => setSymbol(e.target.value)}
+          />
+        </label>
+        <button type="submit">Search</button>
+      </form>
+      {loading && <div>Loading...</div>}
+      {error && <div>Error: {error}</div>}
       {stockData && (
         <div>
-          <h2>Stock Data</h2>
-          <form onSubmit={handleSubmit}>
-            <label>
-              Symbol:
-              <input
-                type="text"
-                value={symbol}
-                onChange={(e) => setSymbol(e.target.value)}
-              />
-            </label>
-            <button type="submit">Search</button>
-          </form>
           <p>Symbol: {stockData.symbol}</p>
           <p>Address: {stockData.address}</p>
           <p>City: {stockData.city}</p>

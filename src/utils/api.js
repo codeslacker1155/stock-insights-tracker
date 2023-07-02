@@ -1,33 +1,79 @@
 const API_KEY = '0rD6UyDj8jmshLwoCdZCWBgBf6pIp1UK2BBjsnb2kK9LFosz4o'; // Replace with your API key
 
-const api = {
-  fetchStockData: async () => {
-    const response = await fetch(
-      'https://mboum-finance.p.rapidapi.com/mo/module/?symbol=AAPL&module=asset-profile%2Cfinancial-data%2Cearnings%2Ccashflow-statement%2Cbalance-sheet',
-      {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': API_KEY,
-          'X-RapidAPI-Host': 'mboum-finance.p.rapidapi.com',
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch stock data');
+const fetchStockData = async () => {
+  const response = await fetch(
+    'https://mboum-finance.p.rapidapi.com/mo/module/?symbol=AAPL&module=asset-profile%2Cfinancial-data%2Cearnings%2Ccashflow-statement%2Cbalance-sheet',
+    {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Host': 'mboum-finance.p.rapidapi.com',
+      },
     }
+  );
 
-    const data = await response.json();
-    // Process the API response and extract the relevant stock data properties
-    const stockData = {
-      symbol: data.symbol,
-      price: data.price,
-      change: data.change,
-      // Extract additional stock data properties as needed
-    };
-
-    return stockData;
+  if (!response.ok) {
+    throw new Error('Failed to fetch stock data');
   }
+
+  const data = await response.json();
+
+  // Extract relevant stock data properties from the response
+  const stockData = {
+    symbol: data.assetProfile.symbol,
+    address: data.assetProfile.address1,
+    city: data.assetProfile.city,
+    state: data.assetProfile.state,
+    zip: data.assetProfile.zip,
+    country: data.assetProfile.country,
+    phone: data.assetProfile.phone,
+    website: data.assetProfile.website,
+    industry: data.assetProfile.industry,
+    sector: data.assetProfile.sector,
+    longBusinessSummary: data.assetProfile.longBusinessSummary,
+    fullTimeEmployees: data.assetProfile.fullTimeEmployees,
+    companyOfficers: data.assetProfile.companyOfficers,
+    auditRisk: data.assetProfile.auditRisk,
+    boardRisk: data.assetProfile.boardRisk,
+    compensationRisk: data.assetProfile.compensationRisk,
+    shareHolderRightsRisk: data.assetProfile.shareHolderRightsRisk,
+    overallRisk: data.assetProfile.overallRisk,
+    governanceEpochDate: data.assetProfile.governanceEpochDate,
+    compensationAsOfEpochDate: data.assetProfile.compensationAsOfEpochDate,
+    earningsChart: data.earnings.earningsChart,
+    financialsChart: data.earnings.financialsChart,
+    financialCurrency: data.financialData.financialCurrency,
+    currentPrice: data.financialData.currentPrice,
+    targetHighPrice: data.financialData.targetHighPrice,
+    targetLowPrice: data.financialData.targetLowPrice,
+    targetMeanPrice: data.financialData.targetMeanPrice,
+    targetMedianPrice: data.financialData.targetMedianPrice,
+    recommendationMean: data.financialData.recommendationMean,
+    recommendationKey: data.financialData.recommendationKey,
+    numberOfAnalystOpinions: data.financialData.numberOfAnalystOpinions,
+    totalCash: data.financialData.totalCash,
+    totalCashPerShare: data.financialData.totalCashPerShare,
+    ebitda: data.financialData.ebitda,
+    totalDebt: data.financialData.totalDebt,
+    quickRatio: data.financialData.quickRatio,
+    currentRatio: data.financialData.currentRatio,
+    totalRevenue: data.financialData.totalRevenue,
+    debtToEquity: data.financialData.debtToEquity,
+    revenuePerShare: data.financialData.revenuePerShare,
+    returnOnAssets: data.financialData.returnOnAssets,
+    returnOnEquity: data.financialData.returnOnEquity,
+    grossProfits: data.financialData.grossProfits,
+    freeCashflow: data.financialData.freeCashflow,
+    operatingCashflow: data.financialData.operatingCashflow,
+    earningsGrowth: data.financialData.earningsGrowth,
+    revenueGrowth: data.financialData.revenueGrowth,
+    grossMargins: data.financialData.grossMargins,
+    ebitdaMargins: data.financialData.ebitdaMargins,
+    operatingMargins: data.financialData.operatingMargins,
+    profitMargins: data.financialData.profitMargins,
+  };
+
+  return stockData;
 };
 
-export default api;
+export { fetchStockData };

@@ -78,7 +78,7 @@ function App() {
       }
     };
       if (symbol && stockData) {
-        updateChartSymbol(symbol);
+        updateChartSymbol(stockData.symbol);
       }
     }, [symbol, stockData, updateChartSymbol]);
 

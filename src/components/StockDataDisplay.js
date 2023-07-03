@@ -1,9 +1,12 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect, useCallback } from 'react';
+import TradingViewWidget from './src/TradingViewWidget';
+import './src/App.css';
 import { fetchStockData } from '../utils/api';
 
 function StockDataDisplay() {
     const [stockData, setStockData] = useState(null);
-    const [symbol] = useState('AAPL');
+    const [symbol] = useState('');
 
     const fetchData = async () => {
         try {
@@ -43,12 +46,14 @@ function StockDataDisplay() {
         fetchData();
         updateChartSymbol(symbol);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [symbol, updateChartSymbol]);
+    }, [symbol, updateChartSymbol]);
 
-        return (
+    return (
             <div>
                 {stockData && (
                     <div>
+                        <div id="tradingview_4d8c0" className="tradingview-widget-container">
+                            {chartInitialized && <TradingViewWidget />}</div>
                         <div className="box">
                             <h3>Company Information</h3>
                             <p>Symbol: {stockData.symbol}</p>
@@ -138,7 +143,7 @@ function StockDataDisplay() {
                     </div>
                 )}
             </div>
-        );
-    };
+    );
+};
 
 export default StockDataDisplay;

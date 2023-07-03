@@ -1,13 +1,12 @@
 import React, { useEffect, useRef } from 'react';
-import './App.css';
 
 let tvScriptLoadingPromise;
 
-export default function TradingViewWidget() {
+export default function TradingViewWidget({ symbol }) {
   const onLoadScriptRef = useRef();
 
   useEffect(() => {
-    onLoadScriptRef.current = createWidget;
+    onLoadScriptRef.current = () => createWidget(symbol);
 
     if (!tvScriptLoadingPromise) {
       tvScriptLoadingPromise = new Promise((resolve) => {
@@ -26,27 +25,27 @@ export default function TradingViewWidget() {
     return () => {
       onLoadScriptRef.current = null;
     };
+  }, [symbol]);
 
-    function createWidget() {
-      if (document.getElementById('tradingview_2c663') && 'TradingView' in window) {
-        new window.TradingView.widget({
-          autosize: true,
-          symbol: 'NASDAQ:AAPL',
-          timezone: 'Etc/UTC',
-          theme: 'dark',
-          style: '1',
-          locale: 'en',
-          toolbar_bg: '#f1f3f6',
-          enable_publishing: false,
-          range: '12M',
-          allow_symbol_change: true,
-          details: true,
-          studies: ['STD;Average_True_Range', 'STD;SMA', 'STD;ROC'],
-          container_id: 'tradingview_2c663',
-        });
-      }
+  function createWidget(symbol) {
+    if (document.getElementById('tradingview_2c663') && 'TradingView' in window) {
+      new window.TradingView.widget({
+        autosize: true,
+        symbol: symbol, // Use the passed symbol value
+        timezone: 'Etc/UTC',
+        theme: 'dark',
+        style: '1',
+        locale: 'en',
+        toolbar_bg: '#f1f3f6',
+        enable_publishing: false,
+        range: '12M',
+        allow_symbol_change: true,
+        details: true,
+        studies: ['STD;Average_True_Range', 'STD;SMA', 'STD;ROC'],
+        container_id: 'tradingview_2c663',
+      });
     }
-  }, []);
+  }
 
   return (
     <div className="tradingview-widget-container">

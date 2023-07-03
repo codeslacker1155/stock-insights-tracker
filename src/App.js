@@ -34,11 +34,12 @@ function App() {
   const handleSearch = async () => {
     if (symbol) {
       await fetchData(symbol);
+      setChartInitialized(true); // Set chart initialization state
     }
   };
 
   const initializeChart = useCallback(() => {
-    if (window.TradingView && window.TradingView.widget && stockData) {
+    if (window.TradingView && window.TradingView.widget && stockData && chartInitialized) {
       window.TradingView.widget({
         autosize: true,
         symbol: symbol,
@@ -54,15 +55,12 @@ function App() {
         studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
         container_id: 'tradingview_4d8c0'
       });
-      setChartInitialized(true);
     }
-  }, [symbol, stockData]);
+  }, [symbol, stockData, chartInitialized]);
 
   useEffect(() => {
-    if (chartInitialized) {
-      initializeChart();
-    }
-  }, [chartInitialized, initializeChart]);
+    initializeChart();
+  }, [initializeChart]);
 
   return (
     <div className="App">
@@ -79,35 +77,37 @@ function App() {
           Search
         </button>
       </div>
-      <div className="tradingview-widget-container">
-        <div id="tradingview_4d8c0"></div>
-      </div>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
         <p className="error-message">{error}</p>
       ) : (
         stockData && (
-          <div id="company-info">
-            <h2>{stockData.symbol}</h2>
-            <p>Address: {stockData.address}</p>
-            <p>City: {stockData.city}</p>
-            <p>State: {stockData.state}</p>
-            <p>ZIP: {stockData.zip}</p>
-            <p>Country: {stockData.country}</p>
-            <p>Phone: {stockData.phone}</p>
-            <p>Website: {stockData.website}</p>
-            <p>Industry: {stockData.industry}</p>
-            <p>Sector: {stockData.sector}</p>
-            <p>Long Business Summary: {stockData.longBusinessSummary}</p>
-            <p>Full-Time Employees: {stockData.fullTimeEmployees}</p>
-            <p>Audit Risk: {stockData.auditRisk}</p>
-            <p>Board Risk: {stockData.boardRisk}</p>
-            <p>Compensation Risk: {stockData.compensationRisk}</p>
-            <p>Shareholder Rights Risk: {stockData.shareHolderRightsRisk}</p>
-            <p>Overall Risk: {stockData.overallRisk}</p>
-            <p>Governance Epoch Date: {stockData.governanceEpochDate}</p>
-            <p>Compensation As Of Epoch Date: {stockData.compensationAsOfEpochDate}</p>
+          <div>
+            <div className="tradingview-widget-container">
+              <div id="tradingview_4d8c0"></div>
+            </div>
+            <div id="company-info">
+              <h2>{stockData.symbol}</h2>
+              <p>Address: {stockData.address}</p>
+              <p>City: {stockData.city}</p>
+              <p>State: {stockData.state}</p>
+              <p>ZIP: {stockData.zip}</p>
+              <p>Country: {stockData.country}</p>
+              <p>Phone: {stockData.phone}</p>
+              <p>Website: {stockData.website}</p>
+              <p>Industry: {stockData.industry}</p>
+              <p>Sector: {stockData.sector}</p>
+              <p>Long Business Summary: {stockData.longBusinessSummary}</p>
+              <p>Full-Time Employees: {stockData.fullTimeEmployees}</p>
+              <p>Audit Risk: {stockData.auditRisk}</p>
+              <p>Board Risk: {stockData.boardRisk}</p>
+              <p>Compensation Risk: {stockData.compensationRisk}</p>
+              <p>Shareholder Rights Risk: {stockData.shareHolderRightsRisk}</p>
+              <p>Overall Risk: {stockData.overallRisk}</p>
+              <p>Governance Epoch Date: {stockData.governanceEpochDate}</p>
+              <p>Compensation As Of Epoch Date: {stockData.compensationAsOfEpochDate}</p>
+            </div>
           </div>
         )
       )}

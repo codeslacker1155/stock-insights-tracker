@@ -21,8 +21,6 @@ p {
   margin: 0;
 }
 
-
-
 input, textarea {
   display: flex;
   justify-content: center;
@@ -47,33 +45,6 @@ button {
   color: white;
   cursor: pointer;
   outline: none;
-  display: inline-block;
-  font: normal normal 300 1.3em 'Open Sans';
-  text-decoration: none;
-  background-color: transparent;
-  border: 1px solid rgb(54, 54, 54);
-  margin: 5px;
-  background-size: 200% 100%;
-  background-image: linear-gradient(to right, transparent 50%, rgb(66, 66, 66) 50%);
-  transition: background-position 0.3s ease;
-}
-
-button:hover {
-  background-position: -100% 0;
-  color: #727272;
-  color: rgba(255, 255, 255, 1);
-  background-color: rgb(54, 54, 54);
-  background-position: -100% 100%;
-}
-
-.text-field {
-  width: 300px;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  margin-right: 10px;
 }
 
 .header {
@@ -152,11 +123,6 @@ button:hover {
   font-size: 16px;
 }
 
-.TradingViewWidget {
-  width: 100%;
-  height: 500px;
-}
-
 .text-box {
   display: flex;
   flex-direction: column;
@@ -185,47 +151,6 @@ button:hover {
   font-size: 16px;
   line-height: 1.5;
 }
-
-@media (max-width: 768px) {
-  .App {
-    padding: 20px;
-  }
-  .search-bar {
-    flex-direction: column;
-  }
-  .symbol-input {
-    margin-bottom: 10px;
-  }
-  .company-info {
-    flex-direction: column;
-  }
-  .company-info-box {
-    margin-bottom: 10px;
-  }
-  .long-business-summary {
-    margin-bottom: 10px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .section__padding {
-    padding: 4rem 6rem;
-  }
-  .section__margin {
-    margin: 4rem;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .section__padding {
-    padding: 4rem 2rem !important;
-  }
-  .section__margin {
-    margin: 4rem 2rem;
-  }
-}
-
-/* Additional Styles */
 
 #tradingview_2c663 {
   width: 100%;

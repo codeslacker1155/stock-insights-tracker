@@ -112,6 +112,7 @@ p {
   border-radius: 10px;
   background-color: #1e1e1e;
   margin: 10px;
+  flex-basis: 50%;
 }
 
 .long-business-summary {
@@ -120,6 +121,7 @@ p {
   margin-bottom: 20px;
   border-radius: 10px;
   background-color: #1e1e1e;
+  flex-basis: 100%;
 }
 
 .company-info-label {
@@ -240,6 +242,7 @@ p {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
 }
 
 .company-details {
@@ -249,9 +252,11 @@ p {
 }
 
 .company-info-box {
-  width: calc(50% - 20px);
+  width: 100%;
+  flex-basis: 50%;
 }
 
 .long-business-summary {
   width: 100%;
+  flex-basis: 100%;
 }

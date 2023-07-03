@@ -67,6 +67,30 @@ function App() {
     }
   }, [chartInitialized, initializeChart]);
 
+  useEffect(() => {
+    // Function to update the dimensions of the TradingView container
+    const updateContainerSize = () => {
+      const container = document.getElementById('tradingview_4d8c0');
+      if (container) {
+        const windowHeight = window.innerHeight;
+        const windowWidth = window.innerWidth;
+        const desiredHeight = windowHeight * 0.7; // Adjust as needed
+        const desiredWidth = windowWidth * 0.8; // Adjust as needed
+        container.style.height = `${desiredHeight}px`;
+        container.style.width = `${desiredWidth}px`;
+      }
+    };
+
+    // Call the function on page load and window resize
+    window.addEventListener('load', updateContainerSize);
+    window.addEventListener('resize', updateContainerSize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', updateContainerSize);
+    };
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -78,9 +102,7 @@ function App() {
       <div className="search-bar">
         <form onSubmit={handleSearch}>
           <input type="text" id="symbol-input" value={symbol} onChange={handleSymbolInputChange} />
-          <button type="submit">
-            Search
-          </button>
+          <button type="submit">Search</button>
         </form>
       </div>
       {loading ? (
@@ -89,33 +111,39 @@ function App() {
         <p className="error-message">Error: {error}</p>
       ) : (
         <>
-          <TradingViewWidget />
+          <div id="tradingview_4d8c0" className="tradingview-widget-container">
+            {chartInitialized && <TradingViewWidget />}
+          </div>
           {stockData && (
             <div id="company-info">
               <h2>{stockData.symbol}</h2>
               <div className="company-details">
                 <div className="company-info-box">
                   <h3>Company Information</h3>
-                  <p><strong>Address:</strong> {stockData.address}<br></br>
-                  <strong>City:</strong> {stockData.city}<br></br>
-                  <strong>State:</strong> {stockData.state}<br></br>
-                  <strong>ZIP:</strong> {stockData.zip}<br></br>
-                  <strong>Country:</strong> {stockData.country}<br></br>
-                  <strong>Phone:</strong> {stockData.phone}<br></br>
-                  <strong>Website:</strong> <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a><br></br>
-                  <strong>Industry:</strong> {stockData.industry}<br></br>
-                  <strong>Sector:</strong> {stockData.sector}</p>
+                  <p>
+                    <strong>Address:</strong> {stockData.address}<br />
+                    <strong>City:</strong> {stockData.city}<br />
+                    <strong>State:</strong> {stockData.state}<br />
+                    <strong>ZIP:</strong> {stockData.zip}<br />
+                    <strong>Country:</strong> {stockData.country}<br />
+                    <strong>Phone:</strong> {stockData.phone}<br />
+                    <strong>Website:</strong> <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a><br />
+                    <strong>Industry:</strong> {stockData.industry}<br />
+                    <strong>Sector:</strong> {stockData.sector}
+                  </p>
                 </div>
                 <div className="company-info-box">
                   <h3>Company Risk Assessment</h3>
-                  <p><strong>Full-Time Employees:</strong> {stockData.fullTimeEmployees}<br></br>
-                  <strong>Audit Risk:</strong> {stockData.auditRisk}<br></br>
-                  <strong>Board Risk:</strong> {stockData.boardRisk}<br></br>
-                  <strong>Compensation Risk:</strong> {stockData.compensationRisk}<br></br>
-                  <strong>Shareholder Rights Risk:</strong> {stockData.shareHolderRightsRisk}<br></br>
-                  <strong>Overall Risk:</strong> {stockData.overallRisk}<br></br>
-                  <strong>Governance Epoch Date:</strong> {stockData.governanceEpochDate}<br></br>
-                  <strong>Compensation As Of Epoch Date:</strong> {stockData.compensationAsOfEpochDate}</p>
+                  <p>
+                    <strong>Full-Time Employees:</strong> {stockData.fullTimeEmployees}<br />
+                    <strong>Audit Risk:</strong> {stockData.auditRisk}<br />
+                    <strong>Board Risk:</strong> {stockData.boardRisk}<br />
+                    <strong>Compensation Risk:</strong> {stockData.compensationRisk}<br />
+                    <strong>Shareholder Rights Risk:</strong> {stockData.shareHolderRightsRisk}<br />
+                    <strong>Overall Risk:</strong> {stockData.overallRisk}<br />
+                    <strong>Governance Epoch Date:</strong> {stockData.governanceEpochDate}<br />
+                    <strong>Compensation As Of Epoch Date:</strong> {stockData.compensationAsOfEpochDate}
+                  </p>
                 </div>
               </div>
               <div className="long-business-summary">

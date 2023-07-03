@@ -117,7 +117,7 @@ function App() {
           {stockData && (
             <div id="company-info">
               <h2>{stockData.symbol}</h2>
-              <div className="company-details">
+              <div className="company-details" style={{ display: 'flex', flexWrap: 'nowrap' }}>
                 <div className="company-info-box">
                   <h3>Company Information</h3>
                   <p>

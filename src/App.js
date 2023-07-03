@@ -32,7 +32,6 @@ function App() {
   };
 
   const handleSearch = async () => {
-    //event.preventDefault(); // Prevent page refresh
     if (symbol) {
       await fetchData(symbol);
     }
@@ -61,8 +60,6 @@ function App() {
 
   useEffect(() => {
     if (chartInitialized) {
-      // Chart is initialized, perform any additional actions if needed
-    } else {
       initializeChart();
     }
   }, [chartInitialized, initializeChart]);

@@ -21,10 +21,25 @@ p {
   margin: 0;
 }
 
+input, textarea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+}
+
 button {
   padding: 10px 20px;
   font-size: 16px;
-  border-radius: 20px;
+  border-radius: 35px;
   border: none;
   background-color: #61dafb;
   color: white;
@@ -101,9 +116,9 @@ button:hover {
 
 .company-info {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-bottom: 20px;
 }
 

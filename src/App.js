@@ -97,26 +97,26 @@ function App() {
               <div className="company-details">
                 <div className="company-info-box">
                   <h3>Company Information</h3>
-                  <p><strong>Address:</strong> {stockData.address}</p>
-                  <p><strong>City:</strong> {stockData.city}</p>
-                  <p><strong>State:</strong> {stockData.state}</p>
-                  <p><strong>ZIP:</strong> {stockData.zip}</p>
-                  <p><strong>Country:</strong> {stockData.country}</p>
-                  <p><strong>Phone:</strong> {stockData.phone}</p>
-                  <p><strong>Website:</strong> <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a></p>
-                  <p><strong>Industry:</strong> {stockData.industry}</p>
-                  <p><strong>Sector:</strong> {stockData.sector}</p>
+                  <p><strong>Address:</strong> {stockData.address}
+                  <strong>City:</strong> {stockData.city}
+                  <strong>State:</strong> {stockData.state}
+                  <strong>ZIP:</strong> {stockData.zip}
+                  <strong>Country:</strong> {stockData.country}
+                  <strong>Phone:</strong> {stockData.phone}
+                  <strong>Website:</strong> <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a>
+                  <strong>Industry:</strong> {stockData.industry}
+                  <strong>Sector:</strong> {stockData.sector}</p>
                 </div>
                 <div className="company-info-box">
                   <h3>Company Risk Assessment</h3>
-                  <p><strong>Full-Time Employees:</strong> {stockData.fullTimeEmployees}</p>
-                  <p><strong>Audit Risk:</strong> {stockData.auditRisk}</p>
-                  <p><strong>Board Risk:</strong> {stockData.boardRisk}</p>
-                  <p><strong>Compensation Risk:</strong> {stockData.compensationRisk}</p>
-                  <p><strong>Shareholder Rights Risk:</strong> {stockData.shareHolderRightsRisk}</p>
-                  <p><strong>Overall Risk:</strong> {stockData.overallRisk}</p>
-                  <p><strong>Governance Epoch Date:</strong> {stockData.governanceEpochDate}</p>
-                  <p><strong>Compensation As Of Epoch Date:</strong> {stockData.compensationAsOfEpochDate}</p>
+                  <p><strong>Full-Time Employees:</strong> {stockData.fullTimeEmployees}
+                  <strong>Audit Risk:</strong> {stockData.auditRisk}
+                  <strong>Board Risk:</strong> {stockData.boardRisk}
+                  <strong>Compensation Risk:</strong> {stockData.compensationRisk}
+                  <strong>Shareholder Rights Risk:</strong> {stockData.shareHolderRightsRisk}
+                  <strong>Overall Risk:</strong> {stockData.overallRisk}
+                  <strong>Governance Epoch Date:</strong> {stockData.governanceEpochDate}
+                  <strong>Compensation As Of Epoch Date:</strong> {stockData.compensationAsOfEpochDate}</p>
                 </div>
               </div>
               <div className="long-business-summary">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { fetchStockData } from './utils/api';
+import StockDataDisplay from './StockDataDisplay';
 import TradingViewWidget from './TradingViewWidget';
 import './App.css';
 
@@ -114,44 +115,7 @@ function App() {
           <div id="tradingview_4d8c0" className="tradingview-widget-container">
             {chartInitialized && <TradingViewWidget />}
           </div>
-          {stockData && (
-            <div id="company-info">
-              <h2>{stockData.symbol}</h2>
-              <div className="company-details" style={{ display: 'flex', flexWrap: 'nowrap' }}>
-                <div className="company-info-box">
-                  <h3>Company Information</h3>
-                  <p>
-                    <strong>Address:</strong> {stockData.address}<br />
-                    <strong>City:</strong> {stockData.city}<br />
-                    <strong>State:</strong> {stockData.state}<br />
-                    <strong>ZIP:</strong> {stockData.zip}<br />
-                    <strong>Country:</strong> {stockData.country}<br />
-                    <strong>Phone:</strong> {stockData.phone}<br />
-                    <strong>Website:</strong> <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a><br />
-                    <strong>Industry:</strong> {stockData.industry}<br />
-                    <strong>Sector:</strong> {stockData.sector}
-                  </p>
-                </div>
-                <div className="company-info-box">
-                  <h3>Company Risk Assessment</h3>
-                  <p>
-                    <strong>Full-Time Employees:</strong> {stockData.fullTimeEmployees}<br />
-                    <strong>Audit Risk:</strong> {stockData.auditRisk}<br />
-                    <strong>Board Risk:</strong> {stockData.boardRisk}<br />
-                    <strong>Compensation Risk:</strong> {stockData.compensationRisk}<br />
-                    <strong>Shareholder Rights Risk:</strong> {stockData.shareHolderRightsRisk}<br />
-                    <strong>Overall Risk:</strong> {stockData.overallRisk}<br />
-                    <strong>Governance Epoch Date:</strong> {stockData.governanceEpochDate}<br />
-                    <strong>Compensation As Of Epoch Date:</strong> {stockData.compensationAsOfEpochDate}
-                  </p>
-                </div>
-              </div>
-              <div className="long-business-summary">
-                <h3>Long Business Summary</h3>
-                <p>{stockData.longBusinessSummary}</p>
-              </div>
-            </div>
-          )}
+          {stockData && <StockDataDisplay stockData={stockData} />}
         </>
       )}
     </div>

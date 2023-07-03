@@ -58,16 +58,6 @@ function StockDataDisplay() {
 
   return (
     <div>
-      <h2>Stock Data</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Symbol:
-          <input type="text" value={symbol} onChange={(e) => setSymbol(e.target.value)} />
-        </label>
-        <button type="submit">Search</button>
-      </form>
-      {loading && <div>Loading...</div>}
-      {error && <div>Error: {error}</div>}
       {stockData && (
         <div>
           <p>Symbol: {stockData.symbol}</p>

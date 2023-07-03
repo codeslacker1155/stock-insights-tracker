@@ -217,3 +217,23 @@ button {
   line-height: 1.5;
 }
 
+@media (max-width: 768px) {
+  .App {
+    padding: 20px;
+  }
+  .search-bar {
+    flex-direction: column;
+  }
+  .symbol-input {
+    margin-bottom: 10px;
+  }
+  .company-info {
+    flex-direction: column;
+  }
+  .company-info-box {
+    margin-bottom: 10px;
+  }
+  .long-business-summary {
+    margin-bottom: 10px;
+  }
+}

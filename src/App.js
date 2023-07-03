@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { fetchStockData } from './utils/api';
+import TradingViewWidget from './TradingViewWidget';
+import './App.css';
 
 function App() {
   const [symbol, setSymbol] = useState('');
@@ -31,7 +33,8 @@ function App() {
     setSymbol(event.target.value.toUpperCase());
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (event) => {
+    event.preventDefault(); // Prevent form submission
     if (symbol) {
       await fetchData(symbol);
     }
@@ -52,7 +55,7 @@ function App() {
         allow_symbol_change: true,
         details: true,
         studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
-        container_id: 'tradingview_4d8c0'
+        container_id: 'tradingview_4d8c0',
       });
       setChartInitialized(true);
     }
@@ -73,43 +76,45 @@ function App() {
         </p>
       </header>
       <div className="search-bar">
-        <label htmlFor="symbol-input">Symbol:</label>
-        <input type="text" id="symbol-input" value={symbol} onChange={handleSymbolInputChange} />
-        <button type="button" onClick={handleSearch}>
-          Search
-        </button>
-      </div>
-      <div className="tradingview-widget-container">
-        <div id="tradingview_4d8c0"></div>
+        <form onSubmit={handleSearch}>
+          <label htmlFor="symbol-input">Symbol:</label>
+          <input type="text" id="symbol-input" value={symbol} onChange={handleSymbolInputChange} />
+          <button type="submit">
+            Search
+          </button>
+        </form>
       </div>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
         <p className="error-message">{error}</p>
       ) : (
-        stockData && (
-          <div id="company-info">
-            <h2>{stockData.symbol}</h2>
-            <p>Address: {stockData.address}</p>
-            <p>City: {stockData.city}</p>
-            <p>State: {stockData.state}</p>
-            <p>ZIP: {stockData.zip}</p>
-            <p>Country: {stockData.country}</p>
-            <p>Phone: {stockData.phone}</p>
-            <p>Website: {stockData.website}</p>
-            <p>Industry: {stockData.industry}</p>
-            <p>Sector: {stockData.sector}</p>
-            <p>Long Business Summary: {stockData.longBusinessSummary}</p>
-            <p>Full-Time Employees: {stockData.fullTimeEmployees}</p>
-            <p>Audit Risk: {stockData.auditRisk}</p>
-            <p>Board Risk: {stockData.boardRisk}</p>
-            <p>Compensation Risk: {stockData.compensationRisk}</p>
-            <p>Shareholder Rights Risk: {stockData.shareHolderRightsRisk}</p>
-            <p>Overall Risk: {stockData.overallRisk}</p>
-            <p>Governance Epoch Date: {stockData.governanceEpochDate}</p>
-            <p>Compensation As Of Epoch Date: {stockData.compensationAsOfEpochDate}</p>
-          </div>
-        )
+        <>
+          <TradingViewWidget />
+          {stockData && (
+            <div id="company-info">
+              <h2>{stockData.symbol}</h2>
+              <p>Address: {stockData.address}</p>
+              <p>City: {stockData.city}</p>
+              <p>State: {stockData.state}</p>
+              <p>ZIP: {stockData.zip}</p>
+              <p>Country: {stockData.country}</p>
+              <p>Phone: {stockData.phone}</p>
+              <p>Website: {stockData.website}</p>
+              <p>Industry: {stockData.industry}</p>
+              <p>Sector: {stockData.sector}</p>
+              <p>Long Business Summary: {stockData.longBusinessSummary}</p>
+              <p>Full-Time Employees: {stockData.fullTimeEmployees}</p>
+              <p>Audit Risk: {stockData.auditRisk}</p>
+              <p>Board Risk: {stockData.boardRisk}</p>
+              <p>Compensation Risk: {stockData.compensationRisk}</p>
+              <p>Shareholder Rights Risk: {stockData.shareHolderRightsRisk}</p>
+              <p>Overall Risk: {stockData.overallRisk}</p>
+              <p>Governance Epoch Date: {stockData.governanceEpochDate}</p>
+              <p>Compensation As Of Epoch Date: {stockData.compensationAsOfEpochDate}</p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

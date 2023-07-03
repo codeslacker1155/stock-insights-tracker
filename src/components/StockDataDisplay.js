@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { fetchStockData } from '../utils/api';
 
 function StockDataDisplay() {
-    const [symbol, setSymbol] = useState('');
     const [stockData, setStockData] = useState(null);
+    const [symbol] = useState('AAPL');
 
     const fetchData = async () => {
         try {
@@ -47,14 +47,6 @@ function StockDataDisplay() {
 
         return (
             <div>
-                <h2>Stock Data</h2>
-                <form onSubmit={fetchData}>
-                    <label>
-                        Symbol:
-                        <input type="text" value={symbol} onChange={(e) => setSymbol(e.target.value)} />
-                    </label>
-                    <button type="submit">Search</button>
-                </form>
                 {stockData && (
                     <div>
                         <div className="box">

@@ -77,19 +77,15 @@ function App() {
       </header>
       <div className="search-bar">
         <form onSubmit={handleSearch}>
-          <label htmlFor="symbol-input">Symbol:</label>
+          <label htmlFor="symbol-input">Symbol: </label>
           <input type="text" id="symbol-input" value={symbol} onChange={handleSymbolInputChange} />
           <button type="submit">
             Search
           </button>
         </form>
       </div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p className="error-message">{error}</p>
-      ) : (
-        <div className="content-wrapper">
+      <div className="tradingview-container">
+        {stockData && (
           <div className="company-info">
             <h2>{stockData.symbol}</h2>
             <div className="info-box">
@@ -103,31 +99,29 @@ function App() {
               <p><strong>Industry:</strong> {stockData.industry}</p>
               <p><strong>Sector:</strong> {stockData.sector}</p>
             </div>
-          </div>
-          <div className="business-summary">
-            <h3>Long Business Summary</h3>
-            <div className="summary-box">
-              <p>{stockData.longBusinessSummary}</p>
+            <div className="business-summary">
+              <h3>Long Business Summary</h3>
+              <div className="summary-box">
+                <p>{stockData.longBusinessSummary}</p>
+              </div>
+            </div>
+            <div className="risk-info">
+              <h3>Risk Information</h3>
+              <div className="info-box">
+                <p><strong>Full-Time Employees:</strong> {stockData.fullTimeEmployees}</p>
+                <p><strong>Audit Risk:</strong> {stockData.auditRisk}</p>
+                <p><strong>Board Risk:</strong> {stockData.boardRisk}</p>
+                <p><strong>Compensation Risk:</strong> {stockData.compensationRisk}</p>
+                <p><strong>Shareholder Rights Risk:</strong> {stockData.shareHolderRightsRisk}</p>
+                <p><strong>Overall Risk:</strong> {stockData.overallRisk}</p>
+                <p><strong>Governance Epoch Date:</strong> {stockData.governanceEpochDate}</p>
+                <p><strong>Compensation As Of Epoch Date:</strong> {stockData.compensationAsOfEpochDate}</p>
+              </div>
             </div>
           </div>
-          <div className="tradingview-container">
-            <TradingViewWidget />
-          </div>
-          <div className="risk-info">
-            <h3>Risk Information</h3>
-            <div className="info-box">
-              <p><strong>Full-Time Employees:</strong> {stockData.fullTimeEmployees}</p>
-              <p><strong>Audit Risk:</strong> {stockData.auditRisk}</p>
-              <p><strong>Board Risk:</strong> {stockData.boardRisk}</p>
-              <p><strong>Compensation Risk:</strong> {stockData.compensationRisk}</p>
-              <p><strong>Shareholder Rights Risk:</strong> {stockData.shareHolderRightsRisk}</p>
-              <p><strong>Overall Risk:</strong> {stockData.overallRisk}</p>
-              <p><strong>Governance Epoch Date:</strong> {stockData.governanceEpochDate}</p>
-              <p><strong>Compensation As Of Epoch Date:</strong> {stockData.compensationAsOfEpochDate}</p>
-            </div>
-          </div>
-        </div>
-      )}
+        )}
+        <TradingViewWidget />
+      </div>
     </div>
   );
 }

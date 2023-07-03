@@ -87,31 +87,42 @@ function App() {
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
-        <p className="error-message">{error}</p>
+        <p className="error-message">Error: {error}</p>
       ) : (
         <>
           <TradingViewWidget />
           {stockData && (
             <div id="company-info">
               <h2>{stockData.symbol}</h2>
-              <p>Address: {stockData.address}</p>
-              <p>City: {stockData.city}</p>
-              <p>State: {stockData.state}</p>
-              <p>ZIP: {stockData.zip}</p>
-              <p>Country: {stockData.country}</p>
-              <p>Phone: {stockData.phone}</p>
-              <p>Website: {stockData.website}</p>
-              <p>Industry: {stockData.industry}</p>
-              <p>Sector: {stockData.sector}</p>
-              <p>Long Business Summary: {stockData.longBusinessSummary}</p>
-              <p>Full-Time Employees: {stockData.fullTimeEmployees}</p>
-              <p>Audit Risk: {stockData.auditRisk}</p>
-              <p>Board Risk: {stockData.boardRisk}</p>
-              <p>Compensation Risk: {stockData.compensationRisk}</p>
-              <p>Shareholder Rights Risk: {stockData.shareHolderRightsRisk}</p>
-              <p>Overall Risk: {stockData.overallRisk}</p>
-              <p>Governance Epoch Date: {stockData.governanceEpochDate}</p>
-              <p>Compensation As Of Epoch Date: {stockData.compensationAsOfEpochDate}</p>
+              <div className="company-details">
+                <div className="company-info-box">
+                  <h3>Company Information</h3>
+                  <p><strong>Address:</strong> {stockData.address}</p>
+                  <p><strong>City:</strong> {stockData.city}</p>
+                  <p><strong>State:</strong> {stockData.state}</p>
+                  <p><strong>ZIP:</strong> {stockData.zip}</p>
+                  <p><strong>Country:</strong> {stockData.country}</p>
+                  <p><strong>Phone:</strong> {stockData.phone}</p>
+                  <p><strong>Website:</strong> <a href={stockData.website} target="_blank" rel="noopener noreferrer">{stockData.website}</a></p>
+                  <p><strong>Industry:</strong> {stockData.industry}</p>
+                  <p><strong>Sector:</strong> {stockData.sector}</p>
+                </div>
+                <div className="company-info-box">
+                  <h3>Company Risk Assessment</h3>
+                  <p><strong>Full-Time Employees:</strong> {stockData.fullTimeEmployees}</p>
+                  <p><strong>Audit Risk:</strong> {stockData.auditRisk}</p>
+                  <p><strong>Board Risk:</strong> {stockData.boardRisk}</p>
+                  <p><strong>Compensation Risk:</strong> {stockData.compensationRisk}</p>
+                  <p><strong>Shareholder Rights Risk:</strong> {stockData.shareHolderRightsRisk}</p>
+                  <p><strong>Overall Risk:</strong> {stockData.overallRisk}</p>
+                  <p><strong>Governance Epoch Date:</strong> {stockData.governanceEpochDate}</p>
+                  <p><strong>Compensation As Of Epoch Date:</strong> {stockData.compensationAsOfEpochDate}</p>
+                </div>
+              </div>
+              <div className="long-business-summary">
+                <h3>Long Business Summary</h3>
+                <p>{stockData.longBusinessSummary}</p>
+              </div>
             </div>
           )}
         </>

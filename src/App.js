@@ -77,7 +77,7 @@ function App() {
       </header>
       <div className="search-bar">
         <form onSubmit={handleSearch}>
-          <label htmlFor="symbol-input">Symbol:</label>
+          <label htmlFor="symbol-input">Symbol:  </label>
           <input type="text" id="symbol-input" value={symbol} onChange={handleSymbolInputChange} />
           <button type="submit">
             Search

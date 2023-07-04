@@ -122,6 +122,13 @@ button {
 .company-info-value {
   font-size: 16px;
 }
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
 .box {
   display: flex;
@@ -137,11 +144,11 @@ button {
   cursor: pointer;
 }
 
-.text-box:hover {
+.box:hover {
   background-color: #505050;
 }
 
-.text-box-title {
+.boxtitle {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;

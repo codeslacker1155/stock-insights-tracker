@@ -13,6 +13,7 @@ function StockDataDisplay() {
             const data = await fetchStockData(symbol);
             if (data) {
                 setStockData(data);
+                updateChartSymbol(symbol);
             } else {
                 console.log('No stock data available');
             }

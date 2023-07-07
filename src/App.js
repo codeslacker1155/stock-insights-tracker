@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { fetchStockData } from './utils/api';
-import TradingViewWidget from './TradingViewWidget.jsx';
+import TradingViewWidget from './components/TradingViewWidget.jsx';
 import StockDataDisplay from './components/StockDataDisplay';
 import './App.css';
 

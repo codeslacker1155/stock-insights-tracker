@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect, useCallback } from 'react';
-import TradingViewWidget from './src/TradingViewWidget.jsx';
+import TradingViewWidget from './TradingViewWidget.jsx';
 import './src/App.css';
 import { fetchStockData } from '../utils/api';
 

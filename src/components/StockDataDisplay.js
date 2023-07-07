@@ -5,7 +5,7 @@ import '../App.css';
 import { fetchStockData } from '../utils/api';
 
 function StockDataDisplay() {
-    const [stockData, setStockData] = useState(null);
+    const [stockData] = useState(null);
     const [symbol] = useState('');
 
     const updateChartSymbol = useCallback((symbol) => {

@@ -113,7 +113,7 @@ function App() {
       ) : (
         <>
           <div className="tradingview-widget-container">
-            {chartInitialized && <TradingViewWidget  symbol={symbol} />}
+            <TradingViewWidget  symbol={symbol} />
           </div>
           {stockData && <StockDataDisplay symbol={symbol} />}
         </>

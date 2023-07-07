@@ -115,7 +115,7 @@ function App() {
           <div id="tradingview_4d8c0" className="tradingview-widget-container">
             {chartInitialized && <TradingViewWidget />}
           </div>
-          {stockData && <StockDataDisplay stockData={stockData} />}
+          {stockData && <StockDataDisplay symbol={symbol} />}
         </>
       )}
     </div>

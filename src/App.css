@@ -123,7 +123,9 @@ button {
   font-size: 16px;
 }
 .grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;

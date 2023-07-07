@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { fetchStockData } from './utils/api';
+import TradingViewWidget from '../TradingViewWidget.jsx';
 import StockDataDisplay from './components/StockDataDisplay';
-import TradingViewWidget from '../TradingViewWidget';
 import './App.css';
 
 function App() {
@@ -112,8 +112,8 @@ function App() {
         <p className="error-message">Error: {error}</p>
       ) : (
         <>
-          <div id="tradingview_4d8c0" className="tradingview-widget-container">
-            {chartInitialized && <TradingViewWidget />}
+          <div className="tradingview-widget-container">
+            {chartInitialized && <TradingViewWidget  symbol={symbol} />}
           </div>
           {stockData && <StockDataDisplay symbol={symbol} />}
         </>

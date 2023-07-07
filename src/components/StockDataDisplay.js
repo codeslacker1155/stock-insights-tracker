@@ -52,7 +52,7 @@ function StockDataDisplay() {
             <div>
                 {stockData && (
                     <div className='grid'>
-                        <div id="tradingview_4d8c0" className="tradingview-widget-container"><TradingViewWidget /></div>
+                        <div className="tradingview-widget-container"><TradingViewWidget symbol={symbol} /></div>
                         <div className="box">
                             <h3>Company Information</h3>
                             <p>Symbol: {stockData.symbol}</p>

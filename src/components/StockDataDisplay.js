@@ -8,21 +8,6 @@ function StockDataDisplay() {
     const [stockData, setStockData] = useState(null);
     const [symbol] = useState('');
 
-    const fetchData = async () => {
-        try {
-            const data = await fetchStockData(symbol);
-            if (data) {
-                setStockData(data);
-                updateChartSymbol(symbol);
-            } else {
-                console.log('No stock data available');
-            }
-        } catch (error) {
-            console.error('Error fetching stock data:', error);
-            console.log('Failed to fetch stock data');
-        }
-
-    };
     const updateChartSymbol = useCallback((symbol) => {
         if (window.TradingView && window.TradingView.widget && stockData) {
             window.TradingView.widget({
@@ -44,10 +29,22 @@ function StockDataDisplay() {
     }, [stockData]);
 
     useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const data = await fetchStockData(symbol);
+            if (data) {
+              updateChartSymbol(symbol);
+            } else {
+              console.log('No stock data available');
+            }
+          } catch (error) {
+            console.error('Error fetching stock data:', error);
+            console.log('Failed to fetch stock data');
+          }
+        };
+    
         fetchData();
-        updateChartSymbol(symbol);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [symbol, updateChartSymbol]);
+      }, [symbol, updateChartSymbol]);
 
     return (
             <div>

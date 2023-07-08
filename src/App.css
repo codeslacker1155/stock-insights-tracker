@@ -147,4 +147,5 @@ button {
   flex-basis: 100%;
   max-width: calc(100% - 40px); /* Adjust the padding value as needed */
   margin: 0 auto;
+  grid-column: 1 / -1; /* Span across all columns */
 }

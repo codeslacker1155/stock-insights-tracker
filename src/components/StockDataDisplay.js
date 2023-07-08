@@ -46,10 +46,6 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <p>Compensation As Of Epoch Date: {stockData.compensationAsOfEpochDate}</p>
           </div>
           <div className="box">
-            <h3>Long Business Summary</h3>
-            <p>{stockData.longBusinessSummary}</p>
-          </div>
-          <div className="box">
             <h3>Earnings Chart</h3>
             <ul>
               {stockData.earningsChart &&
@@ -128,6 +124,10 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <p>Short Percent Float: {stockData.shortPercentFloat && stockData.shortPercentFloat.fmt}</p>
             <p>Percent Insiders: {stockData.percentInsiders && stockData.percentInsiders.fmt}</p>
             <p>Percent Institutions: {stockData.percentInstitutions && stockData.percentInstitutions.fmt}</p>
+          </div>
+          <div className="box">
+            <h3>Long Business Summary</h3>
+            <p>{stockData.longBusinessSummary}</p>
           </div>
         </div>
       )}

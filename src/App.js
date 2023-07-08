@@ -18,7 +18,7 @@ function App() {
       const data = await fetchStockData(symbol);
       if (data) {
         setStockData(data);
-        setChartInitialized(false); // Reset chart initialization state
+        setChartInitialized(true); // Set chartInitialized to true after successful data fetch
       } else {
         setError('No stock data available');
       }
@@ -35,7 +35,7 @@ function App() {
   };
 
   const handleSearch = async (event) => {
-    event.preventDefault(); // Prevent form submission
+    //event.preventDefault(); // Prevent form submission
     if (symbol) {
       await fetchData(symbol);
     }

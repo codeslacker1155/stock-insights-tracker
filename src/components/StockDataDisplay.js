@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../App.css';
 import { fetchStockData } from '../utils/api';
 
-function StockDataDisplay({ symbol }) {
-    const [stockData, setStockData] = useState(null);
-
+function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading, error, setError }) {
+    
+    
     useEffect(() => {
         const fetchData = async () => {
+          try {
             const data = await fetchStockData(symbol);
             setStockData(data);
+          } catch (error) {
+            console.log('Error fetching stock data:', error);
+          }
         };
+      
         fetchData();
-    }, [symbol]);
+      }, [symbol, setStockData]);      
 
   return (
     <div>

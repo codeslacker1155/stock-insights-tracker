@@ -5,14 +5,13 @@ import StockDataDisplay from './components/StockDataDisplay';
 import './App.css';
 
 function App() {
-  const [symbol] = useState('');
+  const [symbol, setSymbol] = useState('');
   const [stockData, setStockData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleSymbolInputChange = (event) => {
-    setStockData(event.target.value);
-    setError(null);
+    setSymbol(event.target.value.toUpperCase());
     console.log('Symbol input changed. New value:', event.target.value);
   };
 
@@ -86,7 +85,7 @@ function App() {
           <div className="tradingview-widget-container" id="tradingview-container">
             <TradingViewWidget symbol={symbol} />
           </div>
-          <StockDataDisplay stockData={stockData} />
+          <StockDataDisplay stockData={stockData} symbol={symbol}/>
         </>
       ) : null}
     </div>

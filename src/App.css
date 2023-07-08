@@ -130,34 +130,6 @@ button {
   width: 100%;
 }
 
-#tradingview_b835b-wrapper {
-  position: relative;
-  box-sizing: content-box;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto !important;
-  padding: 0 !important;
-  font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif;
-}
-
-#tradingview_b835b-wrapper > div {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  padding: 0 !important;
-}
-
-#tradingview_b835b {
-  width: 100%;
-  height: 100%;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.header {
-  background-color: #1e1e1e;
-}
-
 .long-business-summary {
   display: flex;
   flex-direction: column;

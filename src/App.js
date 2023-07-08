@@ -41,7 +41,7 @@ function App() {
   useEffect(() => {
     // Function to update the dimensions of the TradingView container
     const updateContainerSize = () => {
-      const container = document.getElementById('tradingview-widget-container');
+      const container = document.getElementById('tradingview-container');
       if (container) {
         const windowHeight = window.innerHeight;
         const windowWidth = window.innerWidth;

@@ -69,12 +69,12 @@ function App() {
     <div className="App">
       <header className="box">
         <h1>Stockify</h1>
-        <div className='box'><p>
+        <div className='box'><p><br/>
           Stockify is a cutting-edge stock market analysis and visualization platform that empowers users with real-time data, advanced charting tools, and comprehensive company information. Stay informed and make informed investment decisions with Stockify's intuitive interface, powerful features, and user-friendly design. Explore stock market trends, track your favorite companies, and dive deep into financial data with ease. Whether you're a seasoned investor or just getting started, Stockify is your go-to companion for unlocking the potential of the stock market. Take control of your financial future with Stockify!
         </p></div>
         <div>
           <br /><h3>Stockify Tool Instructions:</h3>
-          <ul>
+          <ol>
             <li>Search for a stock symbol by entering it in the search bar and clicking the "Search" button.</li>
             <li>View real-time stock market data and advanced charting tools.</li>
             <li>Explore comprehensive company information.</li>
@@ -89,7 +89,7 @@ function App() {
             <li>Explore institutional ownership percentages and insider trading details.</li>
             <li>Stay up-to-date with the latest stock news and announcements.</li>
             <li>Make informed investment decisions based on real-time data and comprehensive information.</li>
-          </ul>
+          </ol>
         </div>
       </header>
       <div className="search-bar">

@@ -1,44 +1,42 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchStockData } from './utils/api';
 import TradingViewWidget from './components/TradingViewWidget';
 import StockDataDisplay from './components/StockDataDisplay';
 import './App.css';
 
 function App() {
-  const [symbol, setSymbol] = useState('');
+  const [symbol] = useState('');
   const [stockData, setStockData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchData = useCallback(async (symbol) => {
-    try {
-      setLoading(true);
-      setError(null);
-      console.log('Fetching stock data for symbol:', symbol);
-      const data = await fetchStockData(symbol);
-      console.log('Fetched stock data:', data);
-      if (data) {
-        setStockData(data);
-      } else {
-        setError('No stock data available');
-      }
-    } catch (error) {
-      console.error('Error fetching stock data:', error);
-      setError('Failed to fetch stock data');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
   const handleSymbolInputChange = (event) => {
-    setSymbol(event.target.value.toUpperCase());
+    setStockData(null);
+    setError(null);
+    event.preventDefault();
+    console.log('Symbol input changed. New value:', event.target.value);
   };
 
   const handleSearch = async (event) => {
     event.preventDefault();
     if (symbol) {
-      console.log('Search button clicked. Fetching data for symbol:', symbol);
-      await fetchData(symbol);
+      try {
+        setLoading(true);
+        setError(null);
+        console.log('Search button clicked. Fetching data for symbol:', symbol);
+        const data = await fetchStockData(symbol);
+        console.log('Fetched stock data:', data);
+        if (data) {
+          setStockData(data);
+        } else {
+          setError('No stock data available');
+        }
+      } catch (error) {
+        console.error('Error fetching stock data:', error);
+        setError('Failed to fetch stock data');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 

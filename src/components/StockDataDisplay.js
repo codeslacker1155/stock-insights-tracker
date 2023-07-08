@@ -3,21 +3,14 @@ import '../App.css';
 import { fetchStockData } from '../utils/api';
 
 function StockDataDisplay({ symbol }) {
-  const [stockData, setStockData] = useState(null);
-
-  const fetchData = async (symbol) => {
-    try {
-        const data = await fetchStockData(symbol);
-        if (data) {
-            setStockData(data);
-        }
-    } catch (error) {
-        console.error('Error fetching stock data:', error);
-    }
-    };
+    const [stockData, setStockData] = useState(null);
 
     useEffect(() => {
-        fetchData(symbol);
+        const fetchData = async () => {
+            const data = await fetchStockData(symbol);
+            setStockData(data);
+        };
+        fetchData();
     }, [symbol]);
 
   return (

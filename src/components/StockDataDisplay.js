@@ -125,7 +125,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <p>Percent Insiders: {stockData.percentInsiders && stockData.percentInsiders.fmt}</p>
             <p>Percent Institutions: {stockData.percentInstitutions && stockData.percentInstitutions.fmt}</p>
           </div>
-          <div className="box">
+          <div className=".long-business-summary">
             <h3>Long Business Summary</h3>
             <p>{stockData.longBusinessSummary}</p>
           </div>

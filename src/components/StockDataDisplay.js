@@ -1,31 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import TradingViewWidget from './TradingViewWidget.jsx';
 import '../App.css';
 import { fetchStockData } from '../utils/api';
 
 function StockDataDisplay({ symbol }) {
   const [stockData, setStockData] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
+  const fetchData = async (symbol) => {
+    try {
         const data = await fetchStockData(symbol);
-        setStockData(data);
-      } catch (error) {
-        console.log('Error fetching stock data:', error);
-      }
+        if (data) {
+            setStockData(data);
+        }
+    } catch (error) {
+        console.error('Error fetching stock data:', error);
+    }
     };
 
-    fetchData();
-  }, [symbol]);
-  
+    useEffect(() => {
+        fetchData(symbol);
+    }, [symbol]);
+
   return (
     <div>
       {stockData && (
         <div className="grid">
-          <div className="tradingview-widget-container">
-           <TradingViewWidget symbol={symbol} />
-          </div>
           <div className="box">
             <h3>Company Information</h3>
             <p>Symbol: {stockData.symbol}</p>

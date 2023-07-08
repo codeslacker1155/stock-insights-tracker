@@ -52,6 +52,9 @@ function App() {
       }
     };
 
+    // Call the function on initial render
+    updateContainerSize();
+
     // Call the function on page load and window resize
     window.addEventListener('load', updateContainerSize);
     window.addEventListener('resize', updateContainerSize);

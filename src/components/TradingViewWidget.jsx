@@ -30,7 +30,7 @@ export default function TradingViewWidget({ symbol }) {
   function createWidget(symbol) {
     if (document.getElementById('tradingview_2c663') && 'TradingView' in window) {
       new window.TradingView.widget({
-        autosize: true,
+        autosize: false,
         symbol: symbol, // Use the passed symbol value
         timezone: 'Etc/UTC',
         theme: 'dark',

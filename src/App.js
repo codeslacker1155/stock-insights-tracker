@@ -11,9 +11,8 @@ function App() {
   const [error, setError] = useState(null);
 
   const handleSymbolInputChange = (event) => {
-    setStockData(null);
+    setStockData(event.target.value);
     setError(null);
-    event.preventDefault();
     console.log('Symbol input changed. New value:', event.target.value);
   };
 

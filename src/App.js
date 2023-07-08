@@ -67,11 +67,30 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="box">
         <h1>Stockify</h1>
-        <p>
+        <div className='box'><p>
           Stockify is a cutting-edge stock market analysis and visualization platform that empowers users with real-time data, advanced charting tools, and comprehensive company information. Stay informed and make informed investment decisions with Stockify's intuitive interface, powerful features, and user-friendly design. Explore stock market trends, track your favorite companies, and dive deep into financial data with ease. Whether you're a seasoned investor or just getting started, Stockify is your go-to companion for unlocking the potential of the stock market. Take control of your financial future with Stockify!
-        </p>
+        </p></div>
+        <div>
+          <br /><h3>Stockify Tool Instructions:</h3>
+          <ul>
+            <li>Search for a stock symbol by entering it in the search bar and clicking the "Search" button.</li>
+            <li>View real-time stock market data and advanced charting tools.</li>
+            <li>Explore comprehensive company information.</li>
+            <li>Track favorite companies and stay informed about their performance.</li>
+            <li>Analyze stock market trends and make informed investment decisions.</li>
+            <li>Dive deep into financial data and metrics.</li>
+            <li>Get detailed information about company address, industry, sector, and more.</li>
+            <li>View long business summaries to understand the company's background and operations.</li>
+            <li>Access earnings charts and financials charts for insights into revenue, earnings, and more.</li>
+            <li>Discover financial metrics such as total cash, total debt, profit margins, and more.</li>
+            <li>Track stock performance with metrics like 52-week change, 52-week high/low, and moving averages.</li>
+            <li>Explore institutional ownership percentages and insider trading details.</li>
+            <li>Stay up-to-date with the latest stock news and announcements.</li>
+            <li>Make informed investment decisions based on real-time data and comprehensive information.</li>
+          </ul>
+        </div>
       </header>
       <div className="search-bar">
         <form onSubmit={handleSearch}>
@@ -88,7 +107,7 @@ function App() {
           <div className="tradingview-widget-container" id="tradingview-container">
             <TradingViewWidget symbol={symbol} />
           </div>
-          <StockDataDisplay stockData={stockData} symbol={symbol}/>
+          <StockDataDisplay stockData={stockData} symbol={symbol} />
         </>
       ) : null}
     </div>

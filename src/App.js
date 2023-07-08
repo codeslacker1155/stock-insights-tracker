@@ -32,6 +32,11 @@ function App() {
     }
   }, []);
 
+  console.log('Symbol:', symbol); // Added console log
+  console.log('Loading:', loading); // Added console log
+  console.log('Error:', error); // Added console log
+  console.log('Chart Initialized:', chartInitialized); // Added console log
+
   const handleSymbolInputChange = (event) => {
     setSymbol(event.target.value.toUpperCase());
   };
@@ -95,10 +100,7 @@ function App() {
     };
   }, []);
 
-  console.log('Symbol:', symbol); // Added console log
-  console.log('Loading:', loading); // Added console log
-  console.log('Error:', error); // Added console log
-  console.log('Chart Initialized:', chartInitialized); // Added console log
+  
 
   return (
     <div className="App">

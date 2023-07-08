@@ -24,26 +24,26 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
         <div className="grid">
           <div className="box">
             <h3>Company Information</h3>
-            <p>Symbol: {stockData.symbol}</p>
-            <p>Address: {stockData.address}</p>
-            <p>City: {stockData.city}</p>
-            <p>State: {stockData.state}</p>
-            <p>ZIP: {stockData.zip}</p>
-            <p>Country: {stockData.country}</p>
-            <p>Phone: {stockData.phone}</p>
-            <p>Website: {stockData.website}</p>
-            <p>Industry: {stockData.industry}</p>
-            <p>Sector: {stockData.sector}</p>
+            <p><strong>Symbol: </strong>{stockData.symbol}
+            <strong>Address: </strong>{stockData.address}
+            <strong>City: </strong>{stockData.city}
+            <strong>State: </strong>{stockData.state}
+            <strong>ZIP: </strong>{stockData.zip}
+            <strong>Country: </strong>{stockData.country}
+            <strong>Phone: </strong>{stockData.phone}
+            <strong>Website: </strong>{stockData.website}
+            <strong>Industry: </strong>{stockData.industry}
+            <strong>Sector: </strong>{stockData.sector}</p>
           </div>
           <div className="box">
             <h3>Company Details</h3>
-            <p>Full-Time Employees: {stockData.fullTimeEmployees}</p>
-            <p>Audit Risk: {stockData.auditRisk}</p>
-            <p>Board Risk: {stockData.boardRisk}</p>
-            <p>Compensation Risk: {stockData.compensationRisk}</p>
-            <p>Shareholder Rights Risk: {stockData.shareHolderRightsRisk}</p>
-            <p>Governance Epoch Date: {stockData.governanceEpochDate}</p>
-            <p>Compensation As Of Epoch Date: {stockData.compensationAsOfEpochDate}</p>
+            <p><strong>Full-Time Employees: </strong>{stockData.fullTimeEmployees}
+            <strong>Audit Risk: </strong>{stockData.auditRisk}
+            <strong>Board Risk: </strong>{stockData.boardRisk}
+            <strong>Compensation Risk: </strong>{stockData.compensationRisk}
+            <strong>Shareholder Rights Risk: </strong>{stockData.shareHolderRightsRisk}
+            <strong>Governance Epoch Date: </strong>{stockData.governanceEpochDate}
+            <strong>Compensation As Of Epoch Date: </strong>{stockData.compensationAsOfEpochDate}</p>
           </div>
           <div className="box">
             <h3>Earnings Chart</h3>
@@ -71,59 +71,59 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="box">
             <h3>Financial Data</h3>
-            <p>Financial Currency: {stockData.financialCurrency}</p>
-            <p>Current Price: {stockData.currentPrice && stockData.currentPrice.fmt}</p>
-            <p>Target High Price: {stockData.targetHighPrice && stockData.targetHighPrice.fmt}</p>
-            <p>Target Low Price: {stockData.targetLowPrice && stockData.targetLowPrice.fmt}</p>
-            <p>Target Mean Price: {stockData.targetMeanPrice && stockData.targetMeanPrice.fmt}</p>
-            <p>Target Median Price: {stockData.targetMedianPrice && stockData.targetMedianPrice.fmt}</p>
-            <p>Recommendation Mean: {stockData.recommendationMean && stockData.recommendationMean.fmt}</p>
-            <p>Recommendation Key: {stockData.recommendationKey}</p>
+            <p><strong>Financial Currency: </strong>{stockData.financialCurrency}
+            <strong>Current Price: </strong>{stockData.currentPrice && stockData.currentPrice.fmt}
+            <strong>Target High Price: </strong>{stockData.targetHighPrice && stockData.targetHighPrice.fmt}
+            <strong>Target Low Price: </strong>{stockData.targetLowPrice && stockData.targetLowPrice.fmt}
+            <strong>Target Mean Price: </strong>{stockData.targetMeanPrice && stockData.targetMeanPrice.fmt}
+            <strong>Target Median Price: </strong>{stockData.targetMedianPrice && stockData.targetMedianPrice.fmt}
+            <strong>Recommendation Mean: </strong>{stockData.recommendationMean && stockData.recommendationMean.fmt}
+            <strong>Recommendation Key: </strong>{stockData.recommendationKey}</p>
           </div>
           <div className="box">
             <h3>Financial Metrics</h3>
-            <p>Total Cash: {stockData.totalCash && stockData.totalCash.fmt}</p>
-            <p>Total Cash Per Share: {stockData.totalCashPerShare && stockData.totalCashPerShare.fmt}</p>
-            <p>Total Debt: {stockData.totalDebt && stockData.totalDebt.fmt}</p>
-            <p>Quick Ratio: {stockData.quickRatio && stockData.quickRatio.fmt}</p>
-            <p>Current Ratio: {stockData.currentRatio && stockData.currentRatio.fmt}</p>
-            <p>Total Revenue: {stockData.totalRevenue && stockData.totalRevenue.fmt}</p>
-            <p>Debt To Equity: {stockData.debtToEquity && stockData.debtToEquity.fmt}</p>
-            <p>Revenue Per Share: {stockData.revenuePerShare && stockData.revenuePerShare.fmt}</p>
-            <p>Return On Assets: {stockData.returnOnAssets && stockData.returnOnAssets.fmt}</p>
-            <p>Return On Equity: {stockData.returnOnEquity && stockData.returnOnEquity.fmt}</p>
-            <p>Gross Profits: {stockData.grossProfits && stockData.grossProfits.fmt}</p>
-            <p>Free Cashflow: {stockData.freeCashflow && stockData.freeCashflow.fmt}</p>
-            <p>Operating Cashflow: {stockData.operatingCashflow && stockData.operatingCashflow.fmt}</p>
+            <p><strong>Cash: </strong>{stockData.totalCash && stockData.totalCash.fmt}
+            <strong>Total Cash Per Share: </strong>{stockData.totalCashPerShare && stockData.totalCashPerShare.fmt}
+            <strong>Total Debt: </strong>{stockData.totalDebt && stockData.totalDebt.fmt}
+            <strong>Quick Ratio: </strong>{stockData.quickRatio && stockData.quickRatio.fmt}
+            <strong>Current Ratio: </strong>{stockData.currentRatio && stockData.currentRatio.fmt}
+            <strong>Total Revenue: </strong>{stockData.totalRevenue && stockData.totalRevenue.fmt}
+            <strong>Debt To Equity: </strong>{stockData.debtToEquity && stockData.debtToEquity.fmt}
+            <strong>Revenue Per Share: </strong>{stockData.revenuePerShare && stockData.revenuePerShare.fmt}
+            <strong>Return On Assets: </strong>{stockData.returnOnAssets && stockData.returnOnAssets.fmt}
+            <strong>Return On Equity: </strong>{stockData.returnOnEquity && stockData.returnOnEquity.fmt}
+            <strong>Gross Profits: </strong>{stockData.grossProfits && stockData.grossProfits.fmt}
+            <strong>Free Cashflow: </strong>{stockData.freeCashflow && stockData.freeCashflow.fmt}
+            <strong>Operating Cashflow: </strong>{stockData.operatingCashflow && stockData.operatingCashflow.fmt}</p>
           </div>
           <div className="box">
-            <p>Earnings Growth: {stockData.earningsGrowth && stockData.earningsGrowth.fmt}</p>
-            <p>Revenue Growth: {stockData.revenueGrowth && stockData.revenueGrowth.fmt}</p>
-            <p>Gross Margins: {stockData.grossMargins && stockData.grossMargins.fmt}</p>
-            <p>EBITDA: {stockData.ebitda && stockData.ebitda.fmt}</p>
-            <p>Net Income To Common: {stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}</p>
-            <p>EBITDA Margins: {stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}</p>
-            <p>Profit Margins: {stockData.profitMargins && stockData.profitMargins.fmt}</p>
-            <p>Enterprise To Revenue: {stockData.enterpriseToRevenue && stockData.enterpriseToRevenue.fmt}</p>
-            <p>Enterprise To EBITDA: {stockData.enterpriseToEbitda && stockData.enterpriseToEbitda.fmt}</p>
+            <p><strong>Earnings Growth: </strong>{stockData.earningsGrowth && stockData.earningsGrowth.fmt}
+            <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}
+            <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}
+            <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}
+            <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}
+            <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}
+            <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}
+            <strong>Enterprise To Revenue: </strong>{stockData.enterpriseToRevenue && stockData.enterpriseToRevenue.fmt}
+            <strong>Enterprise To EBITDA: </strong>{stockData.enterpriseToEbitda && stockData.enterpriseToEbitda.fmt}</p>
           </div>
           <div className="box">
-            <p>52 Week Change: {stockData['52WeekChange'] && stockData['52WeekChange'].fmt}</p>
-            <p>52 Week High: {stockData['52WeekHigh'] && stockData['52WeekHigh'].fmt}</p>
-            <p>52 Week Low: {stockData['52WeekLow'] && stockData['52WeekLow'].fmt}</p>
-            <p>50 Day Moving Average: {stockData['50DayMovingAverage'] && stockData['50DayMovingAverage'].fmt}</p>
-            <p>200 Day Moving Average: {stockData['200DayMovingAverage'] && stockData['200DayMovingAverage'].fmt}</p>
+            <p><strong>52 Week Change: </strong>{stockData['52WeekChange'] && stockData['52WeekChange'].fmt}
+            <strong>52 Week High: </strong>{stockData['52WeekHigh'] && stockData['52WeekHigh'].fmt}
+            <strong>52 Week Low: </strong>{stockData['52WeekLow'] && stockData['52WeekLow'].fmt}
+            <strong>50 Day Moving Average: </strong>{stockData['50DayMovingAverage'] && stockData['50DayMovingAverage'].fmt}
+            <strong>200 Day Moving Average: </strong>{stockData['200DayMovingAverage'] && stockData['200DayMovingAverage'].fmt}</p>
           </div>
           <div className="box">
-            <p>Shares Outstanding: {stockData.sharesOutstanding && stockData.sharesOutstanding.fmt}</p>
-            <p>Shares Float: {stockData.sharesFloat && stockData.sharesFloat.fmt}</p>
-            <p>Shares Short: {stockData.sharesShort && stockData.sharesShort.fmt}</p>
-            <p>Shares Short Prior Month: {stockData.sharesShortPriorMonth && stockData.sharesShortPriorMonth.fmt}</p>
-            <p>Short Ratio: {stockData.shortRatio && stockData.shortRatio.fmt}</p>
-            <p>Short Percent Outstanding: {stockData.shortPercentOutstanding && stockData.shortPercentOutstanding.fmt}</p>
-            <p>Short Percent Float: {stockData.shortPercentFloat && stockData.shortPercentFloat.fmt}</p>
-            <p>Percent Insiders: {stockData.percentInsiders && stockData.percentInsiders.fmt}</p>
-            <p>Percent Institutions: {stockData.percentInstitutions && stockData.percentInstitutions.fmt}</p>
+            <p><strong>Shares Outstanding: </strong>{stockData.sharesOutstanding && stockData.sharesOutstanding.fmt}
+            <strong>Shares Float: </strong>{stockData.sharesFloat && stockData.sharesFloat.fmt}
+            <strong>Shares Short: </strong>{stockData.sharesShort && stockData.sharesShort.fmt}
+            <strong>Shares Short Prior Month: </strong>{stockData.sharesShortPriorMonth && stockData.sharesShortPriorMonth.fmt}
+            <strong>Short Ratio: </strong>{stockData.shortRatio && stockData.shortRatio.fmt}
+            <strong>Short Percent Outstanding: </strong>{stockData.shortPercentOutstanding && stockData.shortPercentOutstanding.fmt}
+            <strong>Short Percent Float: </strong>{stockData.shortPercentFloat && stockData.shortPercentFloat.fmt}
+            <strong>Percent Insiders: </strong>{stockData.percentInsiders && stockData.percentInsiders.fmt}
+            <strong>Percent Institutions: </strong>{stockData.percentInstitutions && stockData.percentInstitutions.fmt}</p>
           </div>
           <div className=".long-business-summary">
             <h3>Long Business Summary</h3>

@@ -70,6 +70,23 @@ export const fetchStockData = async (symbol) => {
     ebitdaMargins: data.financialData.ebitdaMargins,
     operatingMargins: data.financialData.operatingMargins,
     profitMargins: data.financialData.profitMargins,
+    fiftyTwoWeekChange: data.financialData['52WeekChange'],
+    eterpriseToRevenue: data.financialData.enterpriseToRevenue,
+    enterpriseToEbitda: data.financialData.enterpriseToEbitda,
+    '52WeekHigh': data.financialData['52WeekHigh'],
+    '52WeekLow': data.financialData['52WeekLow'],
+    '50DayMovingAverage': data.financialData['50DayMovingAverage'],
+    '200DayMovingAverage': data.financialData['200DayMovingAverage'],
+    sharesOutstanding: data.financialData.sharesOutstanding,
+    sharesFloat: data.financialData.sharesFloat,
+    sharesShort: data.financialData.sharesShort,
+    sharesShortPriorMonth: data.financialData.sharesShortPriorMonth,
+    shortRatio: data.financialData.shortRatio,
+    shortPercentOutstanding: data.financialData.shortPercentOutstanding,
+    shortPercentFloat: data.financialData.shortPercentFloat,
+    percentInsiders: data.financialData.percentInsiders,
+    percentInstitutions: data.financialData.percentInstitutions,
+    forwardAnnualDividendRate: data.financialData.forwardAnnualDividendRate,
   };
 
   return stockData;

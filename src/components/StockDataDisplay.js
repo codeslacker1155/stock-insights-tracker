@@ -82,7 +82,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="box">
             <h3>Financial Metrics</h3>
-            <p><strong>Cash: </strong>{stockData.totalCash && stockData.totalCash.fmt}<br/>
+            <br/><p><strong>Cash: </strong>{stockData.totalCash && stockData.totalCash.fmt}<br/>
             <strong>Total Cash Per Share: </strong>{stockData.totalCashPerShare && stockData.totalCashPerShare.fmt}<br/>
             <strong>Total Debt: </strong>{stockData.totalDebt && stockData.totalDebt.fmt}<br/>
             <strong>Quick Ratio: </strong>{stockData.quickRatio && stockData.quickRatio.fmt}<br/>

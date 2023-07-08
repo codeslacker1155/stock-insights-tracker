@@ -97,6 +97,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Operating Cashflow: </strong>{stockData.operatingCashflow && stockData.operatingCashflow.fmt}</p>
           </div>
           <div className="box">
+            <h3>Financial Growth</h3>
             <p><strong>Earnings Growth: </strong>{stockData.earningsGrowth && stockData.earningsGrowth.fmt}<br/>
             <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
             <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
@@ -108,6 +109,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Enterprise To EBITDA: </strong>{stockData.enterpriseToEbitda && stockData.enterpriseToEbitda.fmt}</p>
           </div>
           <div className="box">
+            <h3>Index Ticker</h3>
             <p><strong>52 Week Change: </strong>{stockData['52WeekChange'] && stockData['52WeekChange'].fmt}<br/>
             <strong>52 Week High: </strong>{stockData['52WeekHigh'] && stockData['52WeekHigh'].fmt}<br/>
             <strong>52 Week Low: </strong>{stockData['52WeekLow'] && stockData['52WeekLow'].fmt}<br/>
@@ -115,6 +117,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>200 Day Moving Average: </strong>{stockData['200DayMovingAverage'] && stockData['200DayMovingAverage'].fmt}</p>
           </div>
           <div className="box">
+            <h3>Share Statistics</h3>
             <p><strong>Shares Outstanding: </strong>{stockData.sharesOutstanding && stockData.sharesOutstanding.fmt}<br/>
             <strong>Shares Float: </strong>{stockData.sharesFloat && stockData.sharesFloat.fmt}<br/>
             <strong>Shares Short: </strong>{stockData.sharesShort && stockData.sharesShort.fmt}<br/>

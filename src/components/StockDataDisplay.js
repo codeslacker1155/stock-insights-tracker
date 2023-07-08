@@ -1,87 +1,30 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import TradingViewWidget from './TradingViewWidget.jsx';
 import '../App.css';
 import { fetchStockData } from '../utils/api';
 
 function StockDataDisplay({ symbol }) {
   const [stockData, setStockData] = useState(null);
-  const [chartInitialized, setChartInitialized] = useState(false);
-
-  const updateChartSymbol = useCallback((symbol) => {
-    if (window.TradingView && window.TradingView.widget && stockData) {
-      window.TradingView.widget({
-        autosize: true,
-        symbol: symbol,
-        interval: 'D',
-        timezone: 'Etc/UTC',
-        theme: 'dark',
-        style: '1',
-        locale: 'en',
-        toolbar_bg: '#f1f3f6',
-        enable_publishing: false,
-        allow_symbol_change: true,
-        details: true,
-        studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
-        container_id: 'tradingview_4d8c0',
-      });
-    }
-  }, [stockData]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchStockData(symbol);
-        if (data) {
-          setStockData(data);
-          setChartInitialized(false); // Reset chart initialization state
-        } else {
-          console.log('No stock data available');
-        }
+        setStockData(data);
       } catch (error) {
-        console.error('Error fetching stock data:', error);
-        console.log('Failed to fetch stock data');
+        console.log('Error fetching stock data:', error);
       }
     };
 
     fetchData();
   }, [symbol]);
-
-  useEffect(() => {
-    if (chartInitialized) {
-      updateChartSymbol(symbol);
-    }
-  }, [chartInitialized, symbol, updateChartSymbol]);
-
-  useEffect(() => {
-    // Function to update the dimensions of the TradingView container
-    const updateContainerSize = () => {
-      const container = document.getElementById('tradingview_4d8c0');
-      if (container) {
-        const windowHeight = window.innerHeight;
-        const windowWidth = window.innerWidth;
-        const desiredHeight = windowHeight * 0.7; // Adjust as needed
-        const desiredWidth = windowWidth * 0.8; // Adjust as needed
-        container.style.height = `${desiredHeight}px`;
-        container.style.width = `${desiredWidth}px`;
-      }
-    };
-
-    // Call the function on page load and window resize
-    window.addEventListener('load', updateContainerSize);
-    window.addEventListener('resize', updateContainerSize);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', updateContainerSize);
-    };
-  }, []);
-
+  
   return (
     <div>
       {stockData && (
         <div className="grid">
           <div className="tradingview-widget-container">
-            {chartInitialized && <TradingViewWidget symbol={symbol} />}
+           <TradingViewWidget symbol={symbol} />
           </div>
           <div className="box">
             <h3>Company Information</h3>

@@ -9,18 +9,16 @@ function App() {
   const [stockData, setStockData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [chartInitialized, setChartInitialized] = useState(false);
 
   const fetchData = useCallback(async (symbol) => {
     try {
       setLoading(true);
       setError(null);
-      console.log('Fetching stock data for symbol:', symbol); // Added console log
+      console.log('Fetching stock data for symbol:', symbol);
       const data = await fetchStockData(symbol);
-      console.log('Fetched stock data:', data); // Added console log
+      console.log('Fetched stock data:', data);
       if (data) {
         setStockData(data);
-        setChartInitialized(true); // Set chartInitialized to true after successful data fetch
       } else {
         setError('No stock data available');
       }
@@ -32,54 +30,22 @@ function App() {
     }
   }, []);
 
-  console.log('Symbol:', symbol); // Added console log
-  console.log('Loading:', loading); // Added console log
-  console.log('Error:', error); // Added console log
-  console.log('Chart Initialized:', chartInitialized); // Added console log
-
   const handleSymbolInputChange = (event) => {
     setSymbol(event.target.value.toUpperCase());
   };
 
   const handleSearch = async (event) => {
-    //event.preventDefault(); // Prevent form submission
+    event.preventDefault();
     if (symbol) {
-      console.log('Search button clicked. Fetching data for symbol:', symbol); // Added console log
+      console.log('Search button clicked. Fetching data for symbol:', symbol);
       await fetchData(symbol);
     }
   };
 
-  const initializeChart = useCallback(() => {
-    if (window.TradingView && window.TradingView.widget && stockData) {
-      window.TradingView.widget({
-        autosize: true,
-        symbol: symbol,
-        interval: 'D',
-        timezone: 'Etc/UTC',
-        theme: 'dark',
-        style: '1',
-        locale: 'en',
-        toolbar_bg: '#f1f3f6',
-        enable_publishing: false,
-        allow_symbol_change: true,
-        details: true,
-        studies: ['STD;Average%Day%Range', 'STD;SMA', 'STD;ROC'],
-        container_id: 'tradingview_4d8c0',
-      });
-      setChartInitialized(true);
-    }
-  }, [symbol, stockData]);
-
-  useEffect(() => {
-    if (chartInitialized) {
-      initializeChart();
-    }
-  }, [chartInitialized, initializeChart]);
-
   useEffect(() => {
     // Function to update the dimensions of the TradingView container
     const updateContainerSize = () => {
-      const container = document.getElementById('tradingview_4d8c0');
+      const container = document.getElementById('tradingview-widget-container');
       if (container) {
         const windowHeight = window.innerHeight;
         const windowWidth = window.innerWidth;
@@ -100,8 +66,6 @@ function App() {
     };
   }, []);
 
-  
-
   return (
     <div className="App">
       <header className="App-header">
@@ -120,14 +84,14 @@ function App() {
         <p>Loading...</p>
       ) : error ? (
         <p className="error-message">Error: {error}</p>
-      ) : (
+      ) : stockData ? (
         <>
-          <div className="tradingview-widget-container">
-            {chartInitialized && <TradingViewWidget symbol={symbol} />}
+          <div className="tradingview-widget-container" id="tradingview-container">
+            <TradingViewWidget symbol={symbol} />
           </div>
-          {stockData && <StockDataDisplay stockData={stockData} />}
+          <StockDataDisplay stockData={stockData} />
         </>
-      )}
+      ) : null}
     </div>
   );
 }

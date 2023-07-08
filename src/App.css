@@ -132,18 +132,6 @@ button {
   margin-bottom: 20px;
 }
 
-.grid::before,
-.grid::after {
-  content: "";
-  flex-basis: 100%;
-  width: 0;
-  order: 1;
-}
-
-.box:nth-child(even) {
-  order: 2;
-}
-
 .box {
   display: flex;
   flex-direction: column;

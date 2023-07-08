@@ -15,7 +15,9 @@ function App() {
     try {
       setLoading(true);
       setError(null);
+      console.log('Fetching stock data for symbol:', symbol); // Added console log
       const data = await fetchStockData(symbol);
+      console.log('Fetched stock data:', data); // Added console log
       if (data) {
         setStockData(data);
         setChartInitialized(true); // Set chartInitialized to true after successful data fetch
@@ -37,6 +39,7 @@ function App() {
   const handleSearch = async (event) => {
     //event.preventDefault(); // Prevent form submission
     if (symbol) {
+      console.log('Search button clicked. Fetching data for symbol:', symbol); // Added console log
       await fetchData(symbol);
     }
   };
@@ -91,6 +94,11 @@ function App() {
       window.removeEventListener('resize', updateContainerSize);
     };
   }, []);
+
+  console.log('Symbol:', symbol); // Added console log
+  console.log('Loading:', loading); // Added console log
+  console.log('Error:', error); // Added console log
+  console.log('Chart Initialized:', chartInitialized); // Added console log
 
   return (
     <div className="App">

@@ -132,11 +132,23 @@ button {
   margin-bottom: 20px;
 }
 
+.grid::before,
+.grid::after {
+  content: "";
+  flex-basis: 100%;
+  width: 0;
+  order: 1;
+}
+
+.box:nth-child(even) {
+  order: 2;
+}
+
 .box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 20px;
   background-color: #1e1e1e;
   color: white;
@@ -194,12 +206,19 @@ button {
 }
 
 .long-business-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
   width: 100%;
   flex-basis: 100%;
   max-width: calc(100% - 40px); /* Adjust the padding value as needed */
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
 }

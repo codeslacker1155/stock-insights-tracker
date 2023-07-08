@@ -112,10 +112,10 @@ function App() {
         <p className="error-message">Error: {error}</p>
       ) : (
         <>
+          {stockData && <StockDataDisplay stockData={stockData} />}
           <div className="tradingview-widget-container">
-            {chartInitialized && <TradingViewWidget  symbol={symbol} />}
+            {chartInitialized && <TradingViewWidget symbol={symbol} />}
           </div>
-          {stockData && <StockDataDisplay symbol={symbol} />}
         </>
       )}
     </div>

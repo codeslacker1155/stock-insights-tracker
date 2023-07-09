@@ -24,7 +24,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
         <div className="grid">
           <div className="box">
             <h3>Company Information</h3>
-            <p><strong>Symbol: </strong>{symbol}
+            <p><strong>Symbol: </strong>{symbol}<br/>
             <strong>Address: </strong>{stockData.address}<br/>
             <strong>City: </strong>{stockData.city}<br/>
             <strong>State: </strong>{stockData.state}<br/>
@@ -37,7 +37,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="box">
             <h3>Company Details</h3>
-            <p><strong>Full-Time Employees: </strong>{stockData.fullTimeEmployees}
+            <p><strong>Full-Time Employees: </strong>{stockData.fullTimeEmployees}<br/>
             <strong>Audit Risk: </strong>{stockData.auditRisk}<br/>
             <strong>Board Risk: </strong>{stockData.boardRisk}<br/>
             <strong>Compensation Risk: </strong>{stockData.compensationRisk}<br/>

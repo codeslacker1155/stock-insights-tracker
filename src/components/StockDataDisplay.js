@@ -75,7 +75,6 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
             <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
             <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}<br/>
-            <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
             <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}<br/>
             <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
             <strong>Current Price: </strong>{stockData.currentPrice && stockData.currentPrice.fmt}<br/>

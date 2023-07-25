@@ -84,8 +84,6 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
               <strong>Gross Profits: </strong>{stockData.grossProfits}<br />
               <strong>Free Cashflow: </strong>{stockData.freeCashflow}<br />
               <strong>Operating Cashflow: </strong>{stockData.operatingCashflow}</p>
-            <strong>Operating Margins: </strong>{stockData.operatingMargins}<br />
-            <strong>Profit Margins: </strong>{stockData.profitMargins}<br />
           </div>
           <div className="box">
             <h3>Share Statistics</h3>

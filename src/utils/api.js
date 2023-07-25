@@ -132,6 +132,7 @@ export const fetchStockData = async (symbol) => {
     totalCurrentLiabilities: data.financialData?.totalCurrentLiabilities?.fmt || 'N/A',
     deferredLongTermAssetCharges: data.financialData?.deferredLongTermAssetCharges?.fmt || 'N/A',
     shortLongTermDebt: data.financialData?.shortLongTermDebt?.fmt || 'N/A',
+    otherStockholderEquity: data.financialData?.otherStockholderEquity?.fmt || 'N/A',
   };
 
   return stockData;

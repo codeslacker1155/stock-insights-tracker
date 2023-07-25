@@ -79,6 +79,9 @@ export const fetchStockData = async (symbol) => {
     shortPercentFloat: data.financialData.shortPercentFloat,
     percentInsiders: data.financialData.percentInsiders,
     percentInstitutions: data.financialData.percentInstitutions,
+    currentQuarterEstimate: data.financialData.currentQuarterEstimate,
+    currentQuarterEstimateDate: data.financialData.currentQuarterEstimateDate,
+    currentQuarterEstimateYear: data.financialData.currentQuarterEstimateYear,
     forwardAnnualDividendRate: data.financialData.forwardAnnualDividendRate,
   };
 

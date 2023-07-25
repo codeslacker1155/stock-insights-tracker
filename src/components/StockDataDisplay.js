@@ -38,6 +38,10 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           <div className="box">
             <h3>Company Details</h3>
             <p><strong>Full-Time Employees: </strong>{stockData.fullTimeEmployees}<br/>
+            {/*Current Quarter Date (Q2) + Current Quarter Year (2023)*/}
+            <strong>Current Quarter: </strong> {stockData.earnings.financialsChart.currentQuarterEstimateDate} {stockData.earnings.financialsChart.currentQuarterEstimateYear}<br/>
+            <strong>Current Quarter Earnings: </strong> {stockData.earnings.financialsChart.currentQuarterEstimate}<br/>
+            <strong>Overall Risk: </strong>{stockData.overallRisk}<br/>
             <strong>Audit Risk: </strong>{stockData.auditRisk}<br/>
             <strong>Board Risk: </strong>{stockData.boardRisk}<br/>
             <strong>Compensation Risk: </strong>{stockData.compensationRisk}<br/>
@@ -84,7 +88,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Target Mean Price: </strong>{stockData.targetMeanPrice && stockData.targetMeanPrice.fmt}<br/>
             <strong>Target Median Price: </strong>{stockData.targetMedianPrice && stockData.targetMedianPrice.fmt}<br/>
             <strong>Recommendation Mean: </strong>{stockData.recommendationMean && stockData.recommendationMean.fmt}<br/>
-            <strong>Recommendation Key: </strong>{stockData.recommendationKey}
+            <strong>Recommendation Key: </strong>{stockData.recommendationKey}<br/>
             <strong>Number Of Analyst Opinions: </strong>{stockData.numberOfAnalystOpinions && stockData.numberOfAnalystOpinions.fmt}<br/></p>
 
           </div>

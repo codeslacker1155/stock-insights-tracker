@@ -75,6 +75,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
             <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
             <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}<br/>
+            <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
             <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}<br/>
             <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
             <strong>Current Price: </strong>{stockData.currentPrice && stockData.currentPrice.fmt}<br/>
@@ -83,8 +84,8 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Target Mean Price: </strong>{stockData.targetMeanPrice && stockData.targetMeanPrice.fmt}<br/>
             <strong>Target Median Price: </strong>{stockData.targetMedianPrice && stockData.targetMedianPrice.fmt}<br/>
             <strong>Recommendation Mean: </strong>{stockData.recommendationMean && stockData.recommendationMean.fmt}<br/>
-            <strong>Recommendation Key: </strong>{stockData.recommendationKey}</p>
-            <strong>Number Of Analyst Opinions: </strong> {stockData.numberOfAnalystOpinions && stockData.numberOfAnalystOpinions.fmt}<br/>
+            <strong>Recommendation Key: </strong>{stockData.recommendationKey}
+            <strong>Number Of Analyst Opinions: </strong>{stockData.numberOfAnalystOpinions && stockData.numberOfAnalystOpinions.fmt}<br/></p>
 
           </div>
           <div className="box">
@@ -118,6 +119,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
                 </li>
               ))}
             </ul>
+            <br />
           </div>
           <div className="long-business-summary">
             <h3>Long Business Summary</h3>

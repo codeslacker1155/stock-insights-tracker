@@ -125,6 +125,10 @@ export const fetchStockData = async (symbol) => {
     goodwill: data.financialData?.goodwill?.fmt || 'N/A',
     otherAssets: data.financialData?.otherAssets?.fmt || 'N/A',
     cash: data.financialData?.cash?.fmt || 'N/A',
+    currentQuarterEstimate: data.financialData?.currentQuarterEstimate?.fmt || 'N/A',
+    currentQuarterEstimateDate: data.financialData?.currentQuarterEstimateDate?.fmt || 'N/A',
+    currentQuarterEstimateYear: data.financialData?.currentQuarterEstimateYear?.fmt || 'N/A',
+    earningsDate: data.financialData?.earningsDate?.fmt || 'N/A',
     totalCurrentLiabilities: data.financialData?.totalCurrentLiabilities?.fmt || 'N/A',
     deferredLongTermAssetCharges: data.financialData?.deferredLongTermAssetCharges?.fmt || 'N/A',
     shortLongTermDebt: data.financialData?.shortLongTermDebt?.fmt || 'N/A'

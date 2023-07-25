@@ -88,8 +88,8 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           <div className="box"> 
             <h3>Share Statistics</h3>
             <p>
-            <strong>Financial Currency: </strong>{stockData.financialCurrency}<br/>
-            <strong>Recommendation Key: </strong>{stockData.recommendationKey}<br/>
+              <strong>Financial Currency: </strong>{stockData.financialCurrency}<br/>
+              <strong>Recommendation Key: </strong>{stockData.recommendationKey}<br/>
               <strong>Shares Outstanding: </strong>{stockData.sharesOutstanding}<br />
               <strong>Shares Float: </strong>{stockData.sharesFloat}<br />
               <strong>Shares Short: </strong>{stockData.sharesShort}<br />

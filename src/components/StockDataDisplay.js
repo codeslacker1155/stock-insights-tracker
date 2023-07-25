@@ -105,16 +105,18 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
             <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}<br/>
             <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
-            <strong>Enterprise To Revenue: </strong>{stockData.enterpriseToRevenue && stockData.enterpriseToRevenue.fmt}<br/>
-            <strong>Enterprise To EBITDA: </strong>{stockData.enterpriseToEbitda && stockData.enterpriseToEbitda.fmt}</p>
+            </p>
           </div>
           <div className="box">
-            <h3>Index Ticker</h3>
-            <p><strong>52 Week Change: </strong>{stockData['52WeekChange'] && stockData['52WeekChange'].fmt}<br/>
-            <strong>52 Week High: </strong>{stockData['52WeekHigh'] && stockData['52WeekHigh'].fmt}<br/>
-            <strong>52 Week Low: </strong>{stockData['52WeekLow'] && stockData['52WeekLow'].fmt}<br/>
-            <strong>50 Day Moving Average: </strong>{stockData['50DayMovingAverage'] && stockData['50DayMovingAverage'].fmt}<br/>
-            <strong>200 Day Moving Average: </strong>{stockData['200DayMovingAverage'] && stockData['200DayMovingAverage'].fmt}</p>
+            <h3>Company Officers</h3>
+            <ul>
+              {stockData.companyOfficers &&
+                stockData.companyOfficers.map((item, index) => (
+                  <li key={index}>
+                    Name: {item.name}, Age: {item.age}, Title: {item.title}, Compensation:{' '}
+                  </li>
+                ))}
+            </ul>
           </div>
           <div className="box">
             <h3>Share Statistics</h3>

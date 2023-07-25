@@ -96,7 +96,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Free Cashflow: </strong>{stockData.freeCashflow && stockData.freeCashflow.fmt}<br/>
             <strong>Operating Cashflow: </strong>{stockData.operatingCashflow && stockData.operatingCashflow.fmt}</p>
           </div>
-          {/* <div className="box">
+          <div className="box">
             <h3>Financial Growth</h3>
             <p>
             <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
@@ -117,7 +117,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="box"> 
             <h3>Share Statistics</h3>
-            <p><strong>Shares Outstanding: </strong>{stockData.sharesOutstanding && stockData.sharesOutstanding.fmt}<br/>
+            <p><strong>Shares Outstanding: </strong>{stockData.shortPercentOutstanding}<br/>
             <strong>Shares Float: </strong>{stockData.sharesFloat && stockData.sharesFloat.fmt}<br/>
             <strong>Shares Short: </strong>{stockData.sharesShort && stockData.sharesShort.fmt}<br/>
             <strong>Shares Short Prior Month: </strong>{stockData.sharesShortPriorMonth && stockData.sharesShortPriorMonth.fmt}<br/>
@@ -126,7 +126,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Short Percent Float: </strong>{stockData.shortPercentFloat && stockData.shortPercentFloat.fmt}<br/>
             <strong>Percent Insiders: </strong>{stockData.percentInsiders && stockData.percentInsiders.fmt}<br/>
             <strong>Percent Institutions: </strong>{stockData.percentInstitutions && stockData.percentInstitutions.fmt}</p>
-          </div> */}
+          </div>
           <div className="long-business-summary">
             <h3>Long Business Summary</h3>
             <p>{stockData.longBusinessSummary}</p>

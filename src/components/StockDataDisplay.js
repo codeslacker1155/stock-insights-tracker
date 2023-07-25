@@ -98,8 +98,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="box">
             <h3>Financial Growth</h3>
-            <p><strong>Earnings Growth: </strong>{stockData.earningsGrowth && stockData.earningsGrowth.fmt}<br/>
-            <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
+            <p><strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
             <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
             <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}<br/>
             <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
@@ -116,7 +115,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
                   <strong>Title: </strong>{officer.title}<br />
                   {officer.totalPay && officer.totalPay.longFmt && (
                     <div>
-                      <strong>Compensation: </strong>{officer.totalPay.longFmt}<br />
+                      <strong>Compensation: </strong>{officer.totalPay.longFmt}<br /><br />
                     </div>
                   )}
                 </li>

@@ -131,7 +131,7 @@ export const fetchStockData = async (symbol) => {
     earningsDate: data.financialData?.earningsDate?.fmt || 'N/A',
     totalCurrentLiabilities: data.financialData?.totalCurrentLiabilities?.fmt || 'N/A',
     deferredLongTermAssetCharges: data.financialData?.deferredLongTermAssetCharges?.fmt || 'N/A',
-    shortLongTermDebt: data.financialData?.shortLongTermDebt?.fmt || 'N/A'
+    shortLongTermDebt: data.financialData?.shortLongTermDebt?.fmt || 'N/A',
   };
 
   return stockData;

@@ -39,8 +39,8 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <h3>Company Details</h3>
             <p><strong>Full-Time Employees: </strong>{stockData.fullTimeEmployees}<br/>
             {/*Current Quarter Date (Q2) + Current Quarter Year (2023)*/}
-            <strong>Current Quarter: </strong> {stockData.earnings.financialsChart.currentQuarterEstimateDate} {stockData.earnings.financialsChart.currentQuarterEstimateYear}<br/>
-            <strong>Current Quarter Earnings: </strong> {stockData.earnings.financialsChart.currentQuarterEstimate}<br/>
+            <strong>Current Quarter: </strong> {stockData.currentQuarterEstimateDate} {stockData.currentQuarterEstimateYear}<br/>
+            <strong>Current Quarter Earnings: </strong> {stockData.currentQuarterEstimate}<br/>
             <strong>Overall Risk: </strong>{stockData.overallRisk}<br/>
             <strong>Audit Risk: </strong>{stockData.auditRisk}<br/>
             <strong>Board Risk: </strong>{stockData.boardRisk}<br/>

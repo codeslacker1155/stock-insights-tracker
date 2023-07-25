@@ -96,17 +96,16 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Free Cashflow: </strong>{stockData.freeCashflow && stockData.freeCashflow.fmt}<br/>
             <strong>Operating Cashflow: </strong>{stockData.operatingCashflow && stockData.operatingCashflow.fmt}</p>
           </div>
-          <div className="box">
+          {/* <div className="box">
             <h3>Financial Growth</h3>
-            <p><strong>Earnings Growth: </strong>{stockData.earningsGrowth && stockData.earningsGrowth.fmt}<br/>
+            <p>
             <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
             <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
             <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}<br/>
             <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
             <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}<br/>
             <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
-            <strong>Enterprise To Revenue: </strong>{stockData.enterpriseToRevenue && stockData.enterpriseToRevenue.fmt}<br/>
-            <strong>Enterprise To EBITDA: </strong>{stockData.enterpriseToEbitda && stockData.enterpriseToEbitda.fmt}</p>
+            </p>
           </div>
           <div className="box">
             <h3>Index Ticker</h3>
@@ -116,7 +115,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>50 Day Moving Average: </strong>{stockData['50DayMovingAverage'] && stockData['50DayMovingAverage'].fmt}<br/>
             <strong>200 Day Moving Average: </strong>{stockData['200DayMovingAverage'] && stockData['200DayMovingAverage'].fmt}</p>
           </div>
-          <div className="box">
+          <div className="box"> 
             <h3>Share Statistics</h3>
             <p><strong>Shares Outstanding: </strong>{stockData.sharesOutstanding && stockData.sharesOutstanding.fmt}<br/>
             <strong>Shares Float: </strong>{stockData.sharesFloat && stockData.sharesFloat.fmt}<br/>
@@ -127,7 +126,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Short Percent Float: </strong>{stockData.shortPercentFloat && stockData.shortPercentFloat.fmt}<br/>
             <strong>Percent Insiders: </strong>{stockData.percentInsiders && stockData.percentInsiders.fmt}<br/>
             <strong>Percent Institutions: </strong>{stockData.percentInstitutions && stockData.percentInstitutions.fmt}</p>
-          </div>
+          </div> */}
           <div className="long-business-summary">
             <h3>Long Business Summary</h3>
             <p>{stockData.longBusinessSummary}</p>

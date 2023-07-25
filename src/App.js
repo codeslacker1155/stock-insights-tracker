@@ -78,16 +78,6 @@ function App() {
             <li>Search for a stock symbol by entering it in the search bar and clicking the "Search" button.</li>
             <li>View real-time stock market data and advanced charting tools.</li>
             <li>Explore comprehensive company information.</li>
-            <li>Track favorite companies and stay informed about their performance.</li>
-            <li>Analyze stock market trends and make informed investment decisions.</li>
-            <li>Dive deep into financial data and metrics.</li>
-            <li>Get detailed information about company address, industry, sector, and more.</li>
-            <li>View long business summaries to understand the company's background and operations.</li>
-            <li>Access earnings charts and financials charts for insights into revenue, earnings, and more.</li>
-            <li>Discover financial metrics such as total cash, total debt, profit margins, and more.</li>
-            <li>Track stock performance with metrics like 52-week change, 52-week high/low, and moving averages.</li>
-            <li>Explore institutional ownership percentages and insider trading details.</li>
-            <li>Stay up-to-date with the latest stock news and announcements.</li>
             <li>Make informed investment decisions based on real-time data and comprehensive information.</li>
           </ol>
         </div>

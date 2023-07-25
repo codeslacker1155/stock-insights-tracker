@@ -30,18 +30,21 @@ export default function TradingViewWidget({ symbol }) {
   function createWidget(symbol) {
     if (document.getElementById('tradingview_2c663') && 'TradingView' in window) {
       new window.TradingView.widget({
-        autosize: false,
-        symbol: symbol, // Use the passed symbol value
-        timezone: 'Etc/UTC',
-        theme: 'dark',
-        style: '1',
-        locale: 'en',
-        toolbar_bg: '#f1f3f6',
+        symbol: symbol,
+        timezone: "America/New_York",
+        theme: "dark",
+        style: "8",
+        locale: "en",
+        toolbar_bg: "#f1f3f6",
         enable_publishing: false,
-        range: '12M',
+        withdateranges: true,
+        range: "12M",
+        hide_side_toolbar: false,
         allow_symbol_change: true,
         details: true,
-        studies: ['STD;Average_True_Range', 'STD;SMA', 'STD;ROC'],
+        hotlist: true,
+        calendar: true,
+        studies: ["STD;Bollinger_Bands","STD;Linear_Regression","STD;SMA","STD;Multi-Time%Period%Charts","STD;Pivot%1Points%1Standard","STD;TEMA","STD;Zig_Zag"],
         container_id: 'tradingview_2c663',
       });
     }

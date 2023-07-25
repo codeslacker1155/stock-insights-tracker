@@ -3,20 +3,20 @@ import '../App.css';
 import { fetchStockData } from '../utils/api';
 
 function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading, error, setError }) {
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchStockData(symbol);
-        setStockData(data);
-      } catch (error) {
-        console.log('Error fetching stock data:', error);
-      }
-    };
-
-    fetchData();
-  }, [symbol, setStockData]);
+    
+    
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const data = await fetchStockData(symbol);
+            setStockData(data);
+          } catch (error) {
+            console.log('Error fetching stock data:', error);
+          }
+        };
+      
+        fetchData();
+      }, [symbol, setStockData]);      
 
   return (
     <div>
@@ -24,26 +24,26 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
         <div className="grid">
           <div className="box">
             <h3>Company Information</h3>
-            <p><strong>Symbol: </strong>{symbol}<br />
-              <strong>Address: </strong>{stockData.address}<br />
-              <strong>City: </strong>{stockData.city}<br />
-              <strong>State: </strong>{stockData.state}<br />
-              <strong>ZIP: </strong>{stockData.zip}<br />
-              <strong>Country: </strong>{stockData.country}<br />
-              <strong>Phone: </strong>{stockData.phone}<br />
-              <strong>Website: </strong>{stockData.website}<br />
-              <strong>Industry: </strong>{stockData.industry}<br />
-              <strong>Sector: </strong>{stockData.sector}</p>
+            <p><strong>Symbol: </strong>{symbol}<br/>
+            <strong>Address: </strong>{stockData.address}<br/>
+            <strong>City: </strong>{stockData.city}<br/>
+            <strong>State: </strong>{stockData.state}<br/>
+            <strong>ZIP: </strong>{stockData.zip}<br/>
+            <strong>Country: </strong>{stockData.country}<br/>
+            <strong>Phone: </strong>{stockData.phone}<br/>
+            <strong>Website: </strong>{stockData.website}<br/>
+            <strong>Industry: </strong>{stockData.industry}<br/>
+            <strong>Sector: </strong>{stockData.sector}</p>
           </div>
           <div className="box">
             <h3>Company Details</h3>
-            <p><strong>Full-Time Employees: </strong>{stockData.fullTimeEmployees}<br />
-              <strong>Audit Risk: </strong>{stockData.auditRisk}<br />
-              <strong>Board Risk: </strong>{stockData.boardRisk}<br />
-              <strong>Compensation Risk: </strong>{stockData.compensationRisk}<br />
-              <strong>Shareholder Rights Risk: </strong>{stockData.shareHolderRightsRisk}<br />
-              <strong>Governance Epoch Date: </strong>{stockData.governanceEpochDate}<br />
-              <strong>Compensation As Of Epoch Date: </strong>{stockData.compensationAsOfEpochDate}</p>
+            <p><strong>Full-Time Employees: </strong>{stockData.fullTimeEmployees}<br/>
+            <strong>Audit Risk: </strong>{stockData.auditRisk}<br/>
+            <strong>Board Risk: </strong>{stockData.boardRisk}<br/>
+            <strong>Compensation Risk: </strong>{stockData.compensationRisk}<br/>
+            <strong>Shareholder Rights Risk: </strong>{stockData.shareHolderRightsRisk}<br/>
+            <strong>Governance Epoch Date: </strong>{stockData.governanceEpochDate}<br/>
+            <strong>Compensation As Of Epoch Date: </strong>{stockData.compensationAsOfEpochDate}</p>
           </div>
           <div className="box">
             <h3>Earnings Chart</h3>
@@ -70,35 +70,62 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             </ul>
           </div>
           <div className="box">
-            <h3>Financial Metrics</h3>
-            <br /><p><strong>Cash: </strong>{stockData.totalCash}<br />
-              <strong>Total Cash Per Share: </strong>{stockData.totalCashPerShare}<br />
-              <strong>Total Debt: </strong>{stockData.totalDebt}<br />
-              <strong>Quick Ratio: </strong>{stockData.quickRatio}<br />
-              <strong>Current Ratio: </strong>{stockData.currentRatio}<br />
-              <strong>Total Revenue: </strong>{stockData.totalRevenue}<br />
-              <strong>Debt To Equity: </strong>{stockData.debtToEquity}<br />
-              <strong>Revenue Per Share: </strong>{stockData.revenuePerShare}<br />
-              <strong>Return On Assets: </strong>{stockData.returnOnAssets}<br />
-              <strong>Return On Equity: </strong>{stockData.returnOnEquity}<br />
-              <strong>Gross Profits: </strong>{stockData.grossProfits}<br />
-              <strong>Free Cashflow: </strong>{stockData.freeCashflow}<br />
-              <strong>Operating Cashflow: </strong>{stockData.operatingCashflow}</p>
+            <h3>Financial Data</h3>
+            <p><strong>Financial Currency: </strong>{stockData.financialCurrency}<br/>
+            <strong>Current Price: </strong>{stockData.currentPrice && stockData.currentPrice.fmt}<br/>
+            <strong>Target High Price: </strong>{stockData.targetHighPrice && stockData.targetHighPrice.fmt}<br/>
+            <strong>Target Low Price: </strong>{stockData.targetLowPrice && stockData.targetLowPrice.fmt}<br/>
+            <strong>Target Mean Price: </strong>{stockData.targetMeanPrice && stockData.targetMeanPrice.fmt}<br/>
+            <strong>Target Median Price: </strong>{stockData.targetMedianPrice && stockData.targetMedianPrice.fmt}<br/>
+            <strong>Recommendation Mean: </strong>{stockData.recommendationMean && stockData.recommendationMean.fmt}<br/>
+            <strong>Recommendation Key: </strong>{stockData.recommendationKey}</p>
           </div>
           <div className="box">
+            <h3>Financial Metrics</h3>
+            <br/><p><strong>Cash: </strong>{stockData.totalCash && stockData.totalCash.fmt}<br/>
+            <strong>Total Cash Per Share: </strong>{stockData.totalCashPerShare && stockData.totalCashPerShare.fmt}<br/>
+            <strong>Total Debt: </strong>{stockData.totalDebt && stockData.totalDebt.fmt}<br/>
+            <strong>Quick Ratio: </strong>{stockData.quickRatio && stockData.quickRatio.fmt}<br/>
+            <strong>Current Ratio: </strong>{stockData.currentRatio && stockData.currentRatio.fmt}<br/>
+            <strong>Total Revenue: </strong>{stockData.totalRevenue && stockData.totalRevenue.fmt}<br/>
+            <strong>Debt To Equity: </strong>{stockData.debtToEquity && stockData.debtToEquity.fmt}<br/>
+            <strong>Revenue Per Share: </strong>{stockData.revenuePerShare && stockData.revenuePerShare.fmt}<br/>
+            <strong>Return On Assets: </strong>{stockData.returnOnAssets && stockData.returnOnAssets.fmt}<br/>
+            <strong>Return On Equity: </strong>{stockData.returnOnEquity && stockData.returnOnEquity.fmt}<br/>
+            <strong>Gross Profits: </strong>{stockData.grossProfits && stockData.grossProfits.fmt}<br/>
+            <strong>Free Cashflow: </strong>{stockData.freeCashflow && stockData.freeCashflow.fmt}<br/>
+            <strong>Operating Cashflow: </strong>{stockData.operatingCashflow && stockData.operatingCashflow.fmt}</p>
+          </div>
+          <div className="box">
+            <h3>Financial Growth</h3>
+            <p>
+            <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
+            <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
+            <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}<br/>
+            <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
+            <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}<br/>
+            <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
+            </p>
+          </div>
+          <div className="box">
+            <h3>Index Ticker</h3>
+            <p><strong>52 Week Change: </strong>{stockData['52WeekChange'] && stockData['52WeekChange'].fmt}<br/>
+            <strong>52 Week High: </strong>{stockData['52WeekHigh'] && stockData['52WeekHigh'].fmt}<br/>
+            <strong>52 Week Low: </strong>{stockData['52WeekLow'] && stockData['52WeekLow'].fmt}<br/>
+            <strong>50 Day Moving Average: </strong>{stockData['50DayMovingAverage'] && stockData['50DayMovingAverage'].fmt}<br/>
+            <strong>200 Day Moving Average: </strong>{stockData['200DayMovingAverage'] && stockData['200DayMovingAverage'].fmt}</p>
+          </div>
+          <div className="box"> 
             <h3>Share Statistics</h3>
-            <p><strong>Financial Currency: </strong>{stockData.financialCurrency}<br />
-              <strong>Recommendation Key: </strong>{stockData.recommendationKey}<br />
-              <strong>Recommendation Mean: </strong>{stockData.recommendationMean}<br />
-              <strong>Number Of Analyst Opinions: </strong>{stockData.numberOfAnalystOpinions}<br />
-              <strong>Target High Price: </strong>{stockData.targetHighPrice}<br />
-              <strong>Target Low Price: </strong>{stockData.targetLowPrice}<br />
-              <strong>Target Mean Price: </strong>{stockData.targetMeanPrice}<br />
-              <strong>Target Median Price: </strong>{stockData.targetMedianPrice}<br />
-              <strong>Revenue Growth: </strong>{stockData.revenueGrowth}<br />
-              <strong>Gross Margins: </strong>{stockData.grossMargins}<br />
-              <strong>Current Price: </strong>{stockData.currentPrice}<br />
-              <strong>Debt to Equity: </strong>{stockData.debtToEquity}<br /></p>
+            <p><strong>Shares Outstanding: </strong>{stockData.sharesOutstanding && stockData.sharesOutstanding.fmt}<br/>
+            <strong>Shares Float: </strong>{stockData.sharesFloat && stockData.sharesFloat.fmt}<br/>
+            <strong>Shares Short: </strong>{stockData.sharesShort && stockData.sharesShort.fmt}<br/>
+            <strong>Shares Short Prior Month: </strong>{stockData.sharesShortPriorMonth && stockData.sharesShortPriorMonth.fmt}<br/>
+            <strong>Short Ratio: </strong>{stockData.shortRatio && stockData.shortRatio.fmt}<br/>
+            <strong>Short Percent Outstanding: </strong>{stockData.shortPercentOutstanding && stockData.shortPercentOutstanding.fmt}<br/>
+            <strong>Short Percent Float: </strong>{stockData.shortPercentFloat && stockData.shortPercentFloat.fmt}<br/>
+            <strong>Percent Insiders: </strong>{stockData.percentInsiders && stockData.percentInsiders.fmt}<br/>
+            <strong>Percent Institutions: </strong>{stockData.percentInstitutions && stockData.percentInstitutions.fmt}</p>
           </div>
           <div className="long-business-summary">
             <h3>Long Business Summary</h3>

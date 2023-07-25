@@ -72,13 +72,30 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           <div className="box">
             <h3>Financial Data</h3>
             <p><strong>Financial Currency: </strong>{stockData.financialCurrency}<br/>
-            <strong>Current Price: </strong>{stockData.currentPrice && stockData.currentPrice.fmt}<br/>
-            <strong>Target High Price: </strong>{stockData.targetHighPrice && stockData.targetHighPrice.fmt}<br/>
-            <strong>Target Low Price: </strong>{stockData.targetLowPrice && stockData.targetLowPrice.fmt}<br/>
-            <strong>Target Mean Price: </strong>{stockData.targetMeanPrice && stockData.targetMeanPrice.fmt}<br/>
-            <strong>Target Median Price: </strong>{stockData.targetMedianPrice && stockData.targetMedianPrice.fmt}<br/>
-            <strong>Recommendation Mean: </strong>{stockData.recommendationMean && stockData.recommendationMean.fmt}<br/>
             <strong>Recommendation Key: </strong>{stockData.recommendationKey}</p>
+            <strong>Invesments: </strong>{stockData.investments}<br/>
+            <strong>Net Borrowings: </strong>{stockData.netBorrowings}<br/>
+            <strong>Other Assets: </strong>{stockData.otherAssets}<br/>
+            <strong>Cash Flow: </strong>{stockData.cashFlow}<br/>
+            <strong>Capital Expenditures: </strong>{stockData.capitalExpenditures}<br/>
+            <strong>Change To Account Receivables: </strong>{stockData.changeToAccountReceivables}<br/>
+            <strong>Change To Liabilities: </strong>{stockData.changeToLiabilities}<br/>
+            <strong>Change To Net Income: </strong>{stockData.changeToNetincome}<br/>
+            <strong>Change To Operating Activities: </strong>{stockData.changeToOperatingActivities}<br/>
+            <strong>Depreciation: </strong>{stockData.depreciation}<br/>
+            <strong>Dividends Paid: </strong>{stockData.dividendsPaid}<br/>
+            <strong>Investing Cashflow: </strong>{stockData.investingCashflow}<br/>
+            <strong>Net Income: </strong>{stockData.netIncome}<br/>
+            <strong>Other Cashflow From Financing Activities: </strong>{stockData.otherCashflowFromFinancingActivities}<br/>
+            <strong>Other Financing Cashflow: </strong>{stockData.otherFinancingCashflow}<br/>
+            <strong>Other Investing Cashflow: </strong>{stockData.otherInvestingCashflow}<br/>
+            <strong>Treasury Stock: </strong> {stockData.treasuryStock}<br/>
+            <strong>Common Stock: </strong> {stockData.commonStock}<br/>
+            <strong>Common Stock Total Equity: </strong> {stockData.commonStockTotalEquity}<br/>
+            <strong>Net Tangible Assets: </strong> {stockData.netTangibleAssets}<br/>
+            <strong>Other Liabilities: </strong> {stockData.otherLiabilities}<br/>
+            <strong>Repurchase Of Stock: </strong> {stockData.repurchaseOfStock}<br/>
+
           </div>
           <div className="box">
             <h3>Financial Metrics</h3>
@@ -95,10 +112,6 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Gross Profits: </strong>{stockData.grossProfits}<br/>
             <strong>Free Cashflow: </strong>{stockData.freeCashflow }<br/>
             <strong>Operating Cashflow: </strong>{stockData.operatingCashflow   }</p>
-          </div>
-          <div className="box">
-            <h3>Market Exposure</h3>
-            <p><strong>operating Cashflow </strong>{stockData.operatingCashflow} </p>
           </div>
           <div className="box"> 
             <h3>Share Statistics</h3>

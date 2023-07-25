@@ -103,25 +103,6 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
               <strong>Debt to Equity: </strong>{stockData.debtToEquity}<br /></p>
           </div>
           <div className="long-business-summary">
-            <h3>Company Officers</h3>
-            <ul>
-              {stockData.companyOfficers.map((officer, index) => (
-                <li key={index}>
-                  {officer.name && <strong>Name: </strong>}{officer.name}<br />
-                  {officer.title && <strong>Title: </strong>}{officer.title}<br />
-                  {/* Render Compensation if available */}
-                  {officer.totalPay && officer.totalPay.longFmt && (
-                    <div>
-                      <strong>Compensation: </strong>{officer.totalPay.longFmt}<br />
-                    </div>
-                  )}
-                  {/* Render Age if available */}
-                  {officer.age && <strong>Age: </strong>}{officer.age}<br /><br />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="long-business-summary">
             <h3>Long Business Summary</h3>
             <p>{stockData.longBusinessSummary}</p>
           </div>

@@ -97,20 +97,8 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Operating Cashflow: </strong>{stockData.operatingCashflow   }</p>
           </div>
           <div className="box">
-            <h3>Financial Growth</h3>
-            <p>
-              <strong>Earnings Growth: </strong>
-            </p>
-          </div>
-          <div className="box">
-            <h3>Index Ticker</h3>
-            <p><strong>52 Week Change: </strong>{stockData.fiftyTwoWeekChange}<br />
-              <strong>Enterprise to Revenue: </strong>{stockData.enterpriseToRevenue}<br />
-              <strong>Enterprise to EBITDA: </strong>{stockData.enterpriseToEbitda}<br />
-              <strong>52 Week High: </strong>{stockData['52WeekHigh']}<br />
-              <strong>52 Week Low: </strong>{stockData['52WeekLow']}<br />
-              <strong>50 Day Moving Average: </strong>{stockData['50DayMovingAverage']}<br />
-              <strong>200 Day Moving Average: </strong>{stockData['200DayMovingAverage']}</p>
+            <h3>Market Exposure</h3>
+            <p><strong>operating Cashflow </strong>{stockData.operatingCashflow} </p>
           </div>
           <div className="box"> 
             <h3>Share Statistics</h3>
@@ -125,14 +113,17 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
               <strong>Percent Institutions: </strong>{stockData.percentInstitutions}<br />
               <strong>Forward Annual Dividend Rate: </strong>{stockData.forwardAnnualDividendRate}</p>
           </div>
-          <div className="box">
+          <div className="long-business-summary">
             <h3>Company Officers</h3>
             <ul>
               {stockData.companyOfficers.map((officer, index) => (
                 <li key={index}>
                   <strong>Name: </strong>{officer.name}<br />
                   <strong>Title: </strong>{officer.title}<br />
-                  <strong>Compensation: </strong>{officer.compensation}<br />
+                  <strong>Compensation: </strong>{officer.compensation}<br /><br />
+                  <strong>Age: </strong>{officer.age}<br />
+                  <strong>Since: </strong>{officer.since}<br />
+                  <strong>Education: </strong>{officer.education}<br />
                 </li>
               ))}
             </ul>

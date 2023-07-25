@@ -95,7 +95,6 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Net Tangible Assets: </strong> {stockData.netTangibleAssets}<br/>
             <strong>Other Liabilities: </strong> {stockData.otherLiabilities}<br/>
             <strong>Repurchase Of Stock: </strong> {stockData.repurchaseOfStock}<br/>
-
           </div>
           <div className="box">
             <h3>Financial Metrics</h3>
@@ -133,10 +132,8 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
                 <li key={index}>
                   <strong>Name: </strong>{officer.name}<br />
                   <strong>Title: </strong>{officer.title}<br />
-                  <strong>Compensation: </strong>{officer.compensation}<br /><br />
+                  <strong>Compensation: </strong>{officer.totalPay.fmt}<br /><br />
                   <strong>Age: </strong>{officer.age}<br />
-                  <strong>Since: </strong>{officer.since}<br />
-                  <strong>Education: </strong>{officer.education}<br />
                 </li>
               ))}
             </ul>

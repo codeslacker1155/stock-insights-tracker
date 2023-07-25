@@ -84,22 +84,25 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Gross Profits: </strong>{stockData.grossProfits}<br/>
             <strong>Free Cashflow: </strong>{stockData.freeCashflow }<br/>
             <strong>Operating Cashflow: </strong>{stockData.operatingCashflow   }</p>
+            <strong>Operating Margins: </strong>{stockData.operatingMargins}<br/>
+            <strong>Profit Margins: </strong>{stockData.profitMargins}<br/>
           </div>
           <div className="box"> 
             <h3>Share Statistics</h3>
             <p>
               <strong>Financial Currency: </strong>{stockData.financialCurrency}<br/>
               <strong>Recommendation Key: </strong>{stockData.recommendationKey}<br/>
-              <strong>Shares Outstanding: </strong>{stockData.sharesOutstanding}<br />
-              <strong>Shares Float: </strong>{stockData.sharesFloat}<br />
-              <strong>Shares Short: </strong>{stockData.sharesShort}<br />
-              <strong>Shares Short Prior Month: </strong>{stockData.sharesShortPriorMonth}<br />
-              <strong>Short Ratio: </strong>{stockData.shortRatio}<br />
-              <strong>Short Percent Outstanding: </strong>{stockData.shortPercentOutstanding}<br />
-              <strong>Short Percent Float: </strong>{stockData.shortPercentFloat}<br />
-              <strong>Percent Insiders: </strong>{stockData.percentInsiders}<br />
-              <strong>Percent Institutions: </strong>{stockData.percentInstitutions}<br />
-              <strong>Forward Annual Dividend Rate: </strong>{stockData.forwardAnnualDividendRate}</p>
+              <strong>Recommendation Mean: </strong>{stockData.recommendationMean}<br/>
+              <strong>Number Of Analyst Opinions: </strong>{stockData.numberOfAnalystOpinions}<br/>
+              <strong>Target High Price: </strong>{stockData.targetHighPrice}<br/>
+              <strong>Target Low Price: </strong>{stockData.targetLowPrice}<br/>
+              <strong>Target Mean Price: </strong>{stockData.targetMeanPrice}<br/>
+              <strong>Target Median Price: </strong>{stockData.targetMedianPrice}<br/>
+              <strong>Revenue Growth: </strong>{stockData.revenueGrowth}<br/>
+              <strong>Gross Margins: </strong>{stockData.grossMargins}<br/>
+              <strong>Current Price: </strong>{stockData.currentPrice}<br/>
+              <strong>Debt to Equity: </strong>{stockData.debtToEquity}<br/>
+              </p>
           </div>
           <div className="long-business-summary">
             <h3>Company Officers</h3>

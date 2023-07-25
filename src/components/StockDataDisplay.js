@@ -98,14 +98,15 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="box">
             <h3>Financial Growth</h3>
-            <p>
+            <p><strong>Earnings Growth: </strong>{stockData.earningsGrowth && stockData.earningsGrowth.fmt}<br/>
             <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
             <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
             <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}<br/>
             <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
             <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}<br/>
             <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
-            </p>
+            <strong>Enterprise To Revenue: </strong>{stockData.enterpriseToRevenue && stockData.enterpriseToRevenue.fmt}<br/>
+            <strong>Enterprise To EBITDA: </strong>{stockData.enterpriseToEbitda && stockData.enterpriseToEbitda.fmt}</p>
           </div>
           <div className="box">
             <h3>Index Ticker</h3>
@@ -115,7 +116,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>50 Day Moving Average: </strong>{stockData['50DayMovingAverage'] && stockData['50DayMovingAverage'].fmt}<br/>
             <strong>200 Day Moving Average: </strong>{stockData['200DayMovingAverage'] && stockData['200DayMovingAverage'].fmt}</p>
           </div>
-          <div className="box"> 
+          <div className="box">
             <h3>Share Statistics</h3>
             <p><strong>Shares Outstanding: </strong>{stockData.sharesOutstanding && stockData.sharesOutstanding.fmt}<br/>
             <strong>Shares Float: </strong>{stockData.sharesFloat && stockData.sharesFloat.fmt}<br/>

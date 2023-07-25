@@ -89,8 +89,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="box">
             <h3>Share Statistics</h3>
-            <p>
-              <strong>Financial Currency: </strong>{stockData.financialCurrency}<br />
+            <p><strong>Financial Currency: </strong>{stockData.financialCurrency}<br />
               <strong>Recommendation Key: </strong>{stockData.recommendationKey}<br />
               <strong>Recommendation Mean: </strong>{stockData.recommendationMean}<br />
               <strong>Number Of Analyst Opinions: </strong>{stockData.numberOfAnalystOpinions}<br />
@@ -101,19 +100,18 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
               <strong>Revenue Growth: </strong>{stockData.revenueGrowth}<br />
               <strong>Gross Margins: </strong>{stockData.grossMargins}<br />
               <strong>Current Price: </strong>{stockData.currentPrice}<br />
-              <strong>Debt to Equity: </strong>{stockData.debtToEquity}<br />
-            </p>
+              <strong>Debt to Equity: </strong>{stockData.debtToEquity}<br /></p>
           </div>
           <div className="long-business-summary">
             <h3>Company Officers</h3>
-            <ol>
+            <ul>
               {stockData.companyOfficers.map((officer, index) => (
                 <li key={index}>
                   <strong>Name: </strong>{officer.name}<br />
                   <strong>Title: </strong>{officer.title}<br />
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
           <div className="long-business-summary">
             <h3>Long Business Summary</h3>

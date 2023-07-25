@@ -82,29 +82,24 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="box">
             <h3>Financial Metrics</h3>
-            <br/><p><strong>Cash: </strong>{stockData.totalCash && stockData.totalCash.fmt}<br/>
-            <strong>Total Cash Per Share: </strong>{stockData.totalCashPerShare && stockData.totalCashPerShare.fmt}<br/>
-            <strong>Total Debt: </strong>{stockData.totalDebt && stockData.totalDebt.fmt}<br/>
-            <strong>Quick Ratio: </strong>{stockData.quickRatio && stockData.quickRatio.fmt}<br/>
-            <strong>Current Ratio: </strong>{stockData.currentRatio && stockData.currentRatio.fmt}<br/>
-            <strong>Total Revenue: </strong>{stockData.totalRevenue && stockData.totalRevenue.fmt}<br/>
-            <strong>Debt To Equity: </strong>{stockData.debtToEquity && stockData.debtToEquity.fmt}<br/>
-            <strong>Revenue Per Share: </strong>{stockData.revenuePerShare && stockData.revenuePerShare.fmt}<br/>
-            <strong>Return On Assets: </strong>{stockData.returnOnAssets && stockData.returnOnAssets.fmt}<br/>
-            <strong>Return On Equity: </strong>{stockData.returnOnEquity && stockData.returnOnEquity.fmt}<br/>
-            <strong>Gross Profits: </strong>{stockData.grossProfits && stockData.grossProfits.fmt}<br/>
-            <strong>Free Cashflow: </strong>{stockData.freeCashflow && stockData.freeCashflow.fmt}<br/>
-            <strong>Operating Cashflow: </strong>{stockData.operatingCashflow && stockData.operatingCashflow.fmt}</p>
+            <br/><p><strong>Cash: </strong>{stockData.totalCash}<br/>
+            <strong>Total Cash Per Share: </strong>{stockData.totalCashPerShare}<br/>
+            <strong>Total Debt: </strong>{stockData.totalDebt }<br/>
+            <strong>Quick Ratio: </strong>{stockData.quickRatio }<br/>
+            <strong>Current Ratio: </strong>{stockData.currentRatio }<br/>
+            <strong>Total Revenue: </strong>{stockData.totalRevenue }<br/>
+            <strong>Debt To Equity: </strong>{stockData.debtToEquity }<br/>
+            <strong>Revenue Per Share: </strong>{stockData.revenuePerShare }<br/>
+            <strong>Return On Assets: </strong>{stockData.returnOnAssets }<br/>
+            <strong>Return On Equity: </strong>{stockData.returnOnEquity }<br/>
+            <strong>Gross Profits: </strong>{stockData.grossProfits}<br/>
+            <strong>Free Cashflow: </strong>{stockData.freeCashflow }<br/>
+            <strong>Operating Cashflow: </strong>{stockData.operatingCashflow   }</p>
           </div>
           <div className="box">
             <h3>Financial Growth</h3>
             <p>
-            <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
-            <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
-            <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}<br/>
-            <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
-            <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}<br/>
-            <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
+              <strong>Earnings Growth: </strong>
             </p>
           </div>
           <div className="box">

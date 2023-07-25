@@ -72,6 +72,12 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           <div className="box">
             <h3>Financial Data</h3>
             <p><strong>Financial Currency: </strong>{stockData.financialCurrency}<br/>
+            <strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
+            <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
+            <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}<br/>
+            <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
+            <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}<br/>
+            <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
             <strong>Current Price: </strong>{stockData.currentPrice && stockData.currentPrice.fmt}<br/>
             <strong>Target High Price: </strong>{stockData.targetHighPrice && stockData.targetHighPrice.fmt}<br/>
             <strong>Target Low Price: </strong>{stockData.targetLowPrice && stockData.targetLowPrice.fmt}<br/>
@@ -79,6 +85,8 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Target Median Price: </strong>{stockData.targetMedianPrice && stockData.targetMedianPrice.fmt}<br/>
             <strong>Recommendation Mean: </strong>{stockData.recommendationMean && stockData.recommendationMean.fmt}<br/>
             <strong>Recommendation Key: </strong>{stockData.recommendationKey}</p>
+            <strong>Number Of Analyst Opinions: </strong> {stockData.numberOfAnalystOpinions && stockData.numberOfAnalystOpinions.fmt}<br/>
+
           </div>
           <div className="box">
             <h3>Financial Metrics</h3>
@@ -95,16 +103,6 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Gross Profits: </strong>{stockData.grossProfits && stockData.grossProfits.fmt}<br/>
             <strong>Free Cashflow: </strong>{stockData.freeCashflow && stockData.freeCashflow.fmt}<br/>
             <strong>Operating Cashflow: </strong>{stockData.operatingCashflow && stockData.operatingCashflow.fmt}</p>
-          </div>
-          <div className="box">
-            <h3>Financial Growth</h3>
-            <p><strong>Revenue Growth: </strong>{stockData.revenueGrowth && stockData.revenueGrowth.fmt}<br/>
-            <strong>Gross Margins: </strong>{stockData.grossMargins && stockData.grossMargins.fmt}<br/>
-            <strong>EBITDA: </strong>{stockData.ebitda && stockData.ebitda.fmt}<br/>
-            <strong>Net Income To Common: </strong>{stockData.netIncomeToCommon && stockData.netIncomeToCommon.fmt}<br/>
-            <strong>EBITDA Margins: </strong>{stockData.ebitdaMargins && stockData.ebitdaMargins.fmt}<br/>
-            <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
-            </p>
           </div>
           <div className="long-business-summary">
             <h3>Company Officers</h3>

@@ -70,11 +70,6 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             </ul>
           </div>
           <div className="box">
-            <h3>Financial Data</h3>
-            <p><strong>Financial Currency: </strong>{stockData.financialCurrency}<br/>
-            <strong>Recommendation Key: </strong>{stockData.recommendationKey}</p>
-          </div>
-          <div className="box">
             <h3>Financial Metrics</h3>
             <br/><p><strong>Cash: </strong>{stockData.totalCash}<br/>
             <strong>Total Cash Per Share: </strong>{stockData.totalCashPerShare}<br/>
@@ -92,7 +87,10 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="box"> 
             <h3>Share Statistics</h3>
-            <p> <strong>Shares Outstanding: </strong>{stockData.sharesOutstanding}<br />
+            <p>
+            <strong>Financial Currency: </strong>{stockData.financialCurrency}<br/>
+            <strong>Recommendation Key: </strong>{stockData.recommendationKey}<br/>
+              <strong>Shares Outstanding: </strong>{stockData.sharesOutstanding}<br />
               <strong>Shares Float: </strong>{stockData.sharesFloat}<br />
               <strong>Shares Short: </strong>{stockData.sharesShort}<br />
               <strong>Shares Short Prior Month: </strong>{stockData.sharesShortPriorMonth}<br />
@@ -105,16 +103,16 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
           </div>
           <div className="long-business-summary">
             <h3>Company Officers</h3>
-            <ul>
+            <ol>
               {stockData.companyOfficers.map((officer, index) => (
                 <li key={index}>
                   <strong>Name: </strong>{officer.name}<br />
                   <strong>Title: </strong>{officer.title}<br />
                   <strong>Compensation: </strong>{officer.totalPay?.fmt}<br />
-                  <strong>Age: </strong>{officer.age}<br />
+                  <strong>Age: </strong>{officer.age}<br /><br />
                 </li>
               ))}
-            </ul>
+            </ol>
           </div>
           <div className="long-business-summary">
             <h3>Long Business Summary</h3>

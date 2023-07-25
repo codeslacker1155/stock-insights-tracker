@@ -110,7 +110,7 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
                 <li key={index}>
                   <strong>Name: </strong>{officer.name}<br />
                   <strong>Title: </strong>{officer.title}<br />
-                  <strong>Compensation: </strong>{officer.totalPay.fmt}<br /><br />
+                  <strong>Compensation: </strong>{officer.totalPay.longFmt}<br /><br />
                   <strong>Age: </strong>{officer.age}<br />
                 </li>
               ))}

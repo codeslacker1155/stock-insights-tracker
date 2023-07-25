@@ -107,28 +107,21 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <strong>Profit Margins: </strong>{stockData.profitMargins && stockData.profitMargins.fmt}<br/>
             </p>
           </div>
-          <div className="box">
+          <div className="long-business-summary">
             <h3>Company Officers</h3>
             <ul>
-              {stockData.companyOfficers &&
-                stockData.companyOfficers.map((item, index) => (
-                  <li key={index}>
-                    Name: {item.name}, Age: {item.age}, Title: {item.title}, Compensation:{' '}
-                  </li>
-                ))}
+              {stockData.companyOfficers.map((officer, index) => (
+                <li key={index}>
+                  <strong>Name: </strong>{officer.name}<br />
+                  <strong>Title: </strong>{officer.title}<br />
+                  {officer.totalPay && officer.totalPay.longFmt && (
+                    <div>
+                      <strong>Compensation: </strong>{officer.totalPay.longFmt}<br />
+                    </div>
+                  )}
+                </li>
+              ))}
             </ul>
-          </div>
-          <div className="box">
-            <h3>Share Statistics</h3>
-            <p><strong>Shares Outstanding: </strong>{stockData.sharesOutstanding && stockData.sharesOutstanding.fmt}<br/>
-            <strong>Shares Float: </strong>{stockData.sharesFloat && stockData.sharesFloat.fmt}<br/>
-            <strong>Shares Short: </strong>{stockData.sharesShort && stockData.sharesShort.fmt}<br/>
-            <strong>Shares Short Prior Month: </strong>{stockData.sharesShortPriorMonth && stockData.sharesShortPriorMonth.fmt}<br/>
-            <strong>Short Ratio: </strong>{stockData.shortRatio && stockData.shortRatio.fmt}<br/>
-            <strong>Short Percent Outstanding: </strong>{stockData.shortPercentOutstanding && stockData.shortPercentOutstanding.fmt}<br/>
-            <strong>Short Percent Float: </strong>{stockData.shortPercentFloat && stockData.shortPercentFloat.fmt}<br/>
-            <strong>Percent Insiders: </strong>{stockData.percentInsiders && stockData.percentInsiders.fmt}<br/>
-            <strong>Percent Institutions: </strong>{stockData.percentInstitutions && stockData.percentInstitutions.fmt}</p>
           </div>
           <div className="long-business-summary">
             <h3>Long Business Summary</h3>

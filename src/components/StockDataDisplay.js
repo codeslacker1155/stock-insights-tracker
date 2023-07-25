@@ -89,7 +89,16 @@ function StockDataDisplay({ symbol, stockData, setStockData, loading, setLoading
             <h3>Share Statistics</h3>
             <p><strong>Financial Currency: </strong>{stockData.financialCurrency}<br />
               <strong>Recommendation Key: </strong>{stockData.recommendationKey}<br />
-              </p>
+              <strong>Recommendation Mean: </strong>{stockData.recommendationMean}<br />
+              <strong>Number Of Analyst Opinions: </strong>{stockData.numberOfAnalystOpinions}<br />
+              <strong>Target High Price: </strong>{stockData.targetHighPrice}<br />
+              <strong>Target Low Price: </strong>{stockData.targetLowPrice}<br />
+              <strong>Target Mean Price: </strong>{stockData.targetMeanPrice}<br />
+              <strong>Target Median Price: </strong>{stockData.targetMedianPrice}<br />
+              <strong>Revenue Growth: </strong>{stockData.revenueGrowth}<br />
+              <strong>Gross Margins: </strong>{stockData.grossMargins}<br />
+              <strong>Current Price: </strong>{stockData.currentPrice}<br />
+              <strong>Debt to Equity: </strong>{stockData.debtToEquity}<br /></p>
           </div>
           <div className="long-business-summary">
             <h3>Long Business Summary</h3>

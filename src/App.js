@@ -74,12 +74,10 @@ function App() {
         </p></div>
         <div>
           <br /><h3>Stockify Tool Instructions:</h3>
-          <p>
-            Search for a stock symbol by entering it in the search bar and clicking the "Search" button.
-            View real-time stock market data and advanced charting tools.
-            Explore comprehensive company information.
-            Make informed investment decisions based on real-time data and comprehensive information.
-          </p>
+            <p>Search for a stock symbol by entering it in the search bar and clicking the "Search" button.</p>
+            <p>View real-time stock market data and advanced charting tools.</p>
+            <p>Explore comprehensive company information.</p>
+            <p>Make informed investment decisions based on real-time data and comprehensive information.</p>
         </div>
       </header>
       <div className="search-bar">
